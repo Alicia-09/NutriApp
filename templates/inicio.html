@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+
+{% block pagina %}
+NutriApp
+{% endblock %}
+
+{% block titulo %}
+NutriAppo
+{% endblock %}
+
+{% block menu %}
+
+    <div style="background-color:#E9F7EF;">
+        <div class="container py-5">
+            <div class="row align-items-center">
+
+                <!-- TEXTO -->
+                <div class="col-md-6">
+                    <h1 class="fw-bold mb-3">
+                        Transformando tu Bienestar a traves de una alimentacion saludable
+                    </h1>
+
+                    <p class="text-secondary mb-4">
+                        Nuestro proposito es ayudar a miles de personas a lograr una alimentacion mas sana
+                        con herramientas simples, efectivas y adaptadas a ti.
+                    </p>
+
+                    <a class="btn btn-success btn-lg px-4" href="Crear cuenta">Comenzar gratis</a><br>
+                    <small class="d-block mt-2">¿Ya tienes cuenta? <a href="Iniciar sesion">Iniciar Sesión</a></small>
+                </div>
+
+                <!-- IMAGEN DEL TELÉFONO -->
+                <div class="col-md-6 text-center mt-4 mt-md-0">
+                    <img src="{{ url_for('static', filename='img/app.png') }}"
+                        class="img-fluid" 
+                        alt="app en teléfono">
+                </div>
+            </div>
+        </div>-
+    </div>
+
+    <!-- SECCIÓN 2 CON FONDO VERDE CLARO -->
+    <div style="background-color:#E9F7EF;">
+        <div class="container py-5">
+            <div class="row align-items-center">
+
+                <!-- IMAGEN -->
+                <div class="col-md-6 text-center mb-4 mb-md-0">
+                    <img src="{{ url_for('static', filename='img/comida.jpg') }}"
+                        class="img-fluid rounded shadow-sm" alt="comida saludable">
+                </div>
+
+                <!-- TEXTO -->
+                <div class="col-md-6">
+                    <h3 class="fw-bold" style="color:#2E8B57;">Alcanza tus objetivos</h3>
+                    <p class="text-secondary">
+                        Te ayudaremos a llevar un control diario de tu alimentacion dasndote recomendacionesy ayudandote a llegar a tu objetivo con nuestras herramientas que son muy faciles de usar.Nuestro proposito es mejorar tu alimentacion adaptandonos de la mejor manera posible a tus objetivos.
+                    </p>
+                    <ul>
+                        <li>Recetas saludables</li>
+                        <li>Asesoramiento con nutriologos</li>
+                        <li>Planes personalizados</li>
+                        <li>Seguimiento del progreso</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN EXPLORA -->
+    <section class="py-5" style="background-color: #E3F2FD;;">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-5" style="color: #1D7ED1;">Explora las herramientas</h2>
+
+            <div class="row g-4">
+
+                <div class="col-md-3">
+                    <div class="card border-0 shadow h-100">
+                        <img src="{{ url_for('static', filename='img/recetas saludables.jpg') }}" class="card-img-top"
+                        alt="Recetas saludables">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold" style="color: #1D7ED1;">Recetas saludables</h5>
+                            <p class="card-text">
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="card border-0 shadow h-100">
+                        <img src="{{ url_for('static', filename='img/avances.jpg') }}" class="card-img-top"
+                        alt="Proceso">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold" style="color: #1D7ED1;">Seguimiento del Progreso</h5>
+                            <p class="card-text">
+                                Observa tus avances en graficas sencillas y faciles de comprender, ademas te daremos
+                                recomendaciones de que puedes mejorar para que tus avances sean aun mas efectivo.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-3">
+                    <div class="card border-0 shadow h-100">
+                        <img src="{{ url_for('static', filename='img/plan perso.jpg') }}" class="card-img-top"
+                        alt="Planes personales">>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold" style="color: #1D7ED1;">Planes Personalizados</h5>
+                            <p class="card-text">
+                                Obten planes semanales segun tu edad y objetivos: plan semanal completo de compras y
+                                recetas, ademas de ejercicios segun lo que busques.Lleva un control diario de lo que
+                                consumes para mantener una nutrición equilibrada.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="col-md-3">
+                    <div class="card border-0 shadow h-100">
+                        <img src="{{ url_for('static', filename='img/recetas saludables.jpg') }}" class="card-img-top"
+                        alt="Recetas saludables">>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold" style="color: #1D7ED1;">Asesoramiento con nutriologos</h5>
+                            <p class="card-text">
+                                Te daremos recomendaciones de nutriologos que pueden variar en precios para que puedas seleccionar el de tu preferencia y asesorarte con un nutriologo si haci lo deseas.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+{% endblock menu %}

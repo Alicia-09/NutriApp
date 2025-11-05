@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+
+{% block pagina %}
+Crear cuenta
+{% endblock %}
+
+{% block titulo %}
+Crear cuenta
+{% endblock %}
+
+{% block menu %}
+
+<div class="container my-5 justify-content-center">
+    <div class="col-lg-8 col-md-10">
+        <div class="card shadow-lg rounded-4 border-0" style="background-color: #E9F7EF;">
+            <div class="card-body p-4 p-md-5">
+                <div class="text-center mb-3 ">
+                    <h1 class="text-danger fw-bold">Crea una cuenta</h1>
+                    <p class="text-center text-white">Es rapido y facil</p>
+                </div>
+
+                <form method="POST" action="{{ url_for('crearCuenta') }}">
+
+                    <section class="row mb-3">
+                        <div class="col-6">
+                            <label for="Nombre" class="form-label"></label>
+                            <input type="text" class="form-control" id="nombre" name="Nombre" required
+                                minlength="3" maxlength="20" placeholder="Nombres"
+                                value="{{ request.form.get('Nombre', '')}}">
+                        </div>
+
+
+                        <div class="col-6">
+                            <label for="Apellido" class="form-label"></label>
+                            <input type="text" class="form-control" id="Apellido" name="Apellido"
+                                value="{{ request.form.get('Apellido', '')}}"
+                                placeholder="Apellidos">
+                        </div>
+                    </section>
+
+
+
+                    <section class="row">
+                        <div class="mb-3">
+                            <label for="Fecha" class="form-label">Fecha de nacimiento</label>
+                            <input type="date" class="form-control" id="Fecha" name="Fecha" 
+                            value="{{ request.form.get('Fecha', '')}}">
+                        </div>
+                    </section>
+
+                    <div class="mb-3">
+                        <label class="form-label">Genero</label>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" id="mujer" name="Genero" value="Mujer">
+                            <label for="mujer" class="form-check-label">Mujer</label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" id="hombre" name="Genero" value="Hombre">
+                            <label for="hombre" class="form-check-label">Hombre</label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" id="personalizado" name="Genero"
+                                value="Personalizado">
+                            <label for="personalizado" class="form-check-label">Personalizado</label>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="Email" class="form-label"></label>
+                        <input type="email" class="form-control" id="Email" name="Email"
+                            placeholder="Correo electronico" 
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                            value="{{ request.form.get('Email', '')}}">
+                    </div>
+
+                    <section class="row mb-3">
+                        <div class="col-6">
+                            <label for="Contra" class="form-label"></label>
+                            <input type="password" class="form-control" id="Contra" name="Contra"
+                                placeholder="Contraseña" 
+                                aria-describedby="passwordHelp"
+                                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                title="Debe contener al menos un numero, una mayuscula y una minuscula y al menos un digito">
+                            <div id="passwordHelp" class="form-text">
+                                Minimo 8 caracteres, incluye mayusculas, minusculas y un caracter especial
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <label for="ContraConfirm" class="form-label"></label>
+                            <input type="password" class="form-control" id="ContraConfirm"
+                                name="ContraConfirm" placeholder="Confirmar contraseña">
+                        </div>
+
+                    </section>
+
+                    <div class="card-body p-4 p-md-5">
+                        <div class="container mt-4">
+                            {% with messages = get_flashed_messages(with_categories=true) %}
+                            {% if messages %}
+                            {% for category, message in messages %}
+                            <div class="alert alert-{{ 'danger' if category == 'error' else 'danger' }} alert-dismissible fade show"
+                                role="alert">
+                            </div>
+                            {{ message}}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                    </div>
+
+                    <p class="text-small">
+                        Es posible que las personas que usan nuestro servicio hayan subido tu información de
+                        contacto a
+                        Facebook.
+                        <a href="#">Mas informacion</a>
+                    </p>
+
+                    <p class="text-small">
+                        Al hacer clic en Registrarte, aceptas las <a href="#">Condiciones</a>
+                        <a href="#">Politica de privacidad</a> y la <a href="#">Politica de cookies</a>
+                        Es posible que te enviemos notificaciones por SMS, que podrás desactivar cuando quieras.
+                    </p>
+
+                    <div class="text-center mb-3">
+                        <button type="submit" class="btn bg-danger text-white">Registrarte</button>
+                    </div>
+
+                    <p class="text-center">
+                        <a href="#">
+                        </a>
+                    </p>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock menu %}
