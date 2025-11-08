@@ -5,7 +5,7 @@ NutriApp
 {% endblock %}
 
 {% block titulo %}
-NutriAppo
+NutriApp
 {% endblock %}
 
 {% block menu %}
@@ -13,8 +13,6 @@ NutriAppo
     <div style="background-color:#E9F7EF;">
         <div class="container py-5">
             <div class="row align-items-center">
-
-                <!-- TEXTO -->
                 <div class="col-md-6">
                     <h1 class="fw-bold mb-3">
                         Transformando tu Bienestar a traves de una alimentacion saludable
@@ -22,14 +20,15 @@ NutriAppo
 
                     <p class="text-secondary mb-4">
                         Nuestro proposito es ayudar a miles de personas a lograr una alimentacion mas sana
-                        con herramientas simples, efectivas y adaptadas a ti.
+                        de manera simple, efectiva y adaptada a ti.
+                        Descubre la gran cantidad de herramientas con las que contamos y explora nuestra app
+                         sumergiendote en un nutrimundo lleno de informacion valiosa que te servira para comenzar un cambio en tu vida.
                     </p>
 
-                    <a class="btn btn-success btn-lg px-4" href="Crear cuenta">Comenzar gratis</a><br>
-                    <small class="d-block mt-2">¿Ya tienes cuenta? <a href="Iniciar sesion">Iniciar Sesión</a></small>
+                    <a class="btn btn-success btn-lg mb-4" href="http://127.0.0.1:5000/crearCuenta">Comenzar gratis</a><br>
+                    <small>¿Ya tienes cuenta? <a href="http://127.0.0.1:5000/sesion">Iniciar Sesión</a></small>
                 </div>
 
-                <!-- IMAGEN DEL TELÉFONO -->
                 <div class="col-md-6 text-center mt-4 mt-md-0">
                     <img src="{{ url_for('static', filename='img/app.png') }}"
                         class="img-fluid" 
@@ -39,18 +38,15 @@ NutriAppo
         </div>-
     </div>
 
-    <!-- SECCIÓN 2 CON FONDO VERDE CLARO -->
     <div style="background-color:#E9F7EF;">
         <div class="container py-5">
             <div class="row align-items-center">
 
-                <!-- IMAGEN -->
                 <div class="col-md-6 text-center mb-4 mb-md-0">
                     <img src="{{ url_for('static', filename='img/comida.jpg') }}"
                         class="img-fluid rounded shadow-sm" alt="comida saludable">
                 </div>
 
-                <!-- TEXTO -->
                 <div class="col-md-6">
                     <h3 class="fw-bold" style="color:#2E8B57;">Alcanza tus objetivos</h3>
                     <p class="text-secondary">
@@ -68,7 +64,6 @@ NutriAppo
         </div>
     </div>
 
-    <!-- SECCIÓN EXPLORA -->
     <section class="py-5" style="background-color: #E3F2FD;;">
         <div class="container">
             <h2 class="text-center fw-bold mb-5" style="color: #1D7ED1;">Explora las herramientas</h2>
@@ -82,7 +77,8 @@ NutriAppo
                         <div class="card-body">
                             <h5 class="card-title fw-bold" style="color: #1D7ED1;">Recetas saludables</h5>
                             <p class="card-text">
-
+                             Te daremos recetas saludables, faciles de preparar por si eres primeriso en la cocina y muy accesibles,
+                             con precios variados y la lista de productos con su nombre para que los encuentres facilmente en el supermercado.
                             </p>
                         </div>
                     </div>
@@ -106,7 +102,7 @@ NutriAppo
                 <div class="col-md-3">
                     <div class="card border-0 shadow h-100">
                         <img src="{{ url_for('static', filename='img/plan perso.jpg') }}" class="card-img-top"
-                        alt="Planes personales">>
+                        alt="Planes personales">
                         <div class="card-body">
                             <h5 class="card-title fw-bold" style="color: #1D7ED1;">Planes Personalizados</h5>
                             <p class="card-text">
@@ -122,7 +118,7 @@ NutriAppo
                 <div class="col-md-3">
                     <div class="card border-0 shadow h-100">
                         <img src="{{ url_for('static', filename='img/recetas saludables.jpg') }}" class="card-img-top"
-                        alt="Recetas saludables">>
+                        alt="Recetas saludables">
                         <div class="card-body">
                             <h5 class="card-title fw-bold" style="color: #1D7ED1;">Asesoramiento con nutriologos</h5>
                             <p class="card-text">

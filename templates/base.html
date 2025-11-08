@@ -11,31 +11,44 @@
 
 <body>
 
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg py-3 bg-white shadow">
-        <div class="container">
-            <a class="navbar-brand fw-bold" style="color:#2E8B57;">{% block titulo %}{% endblock %}</a>
+    <header>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <nav class="navbar navbar-expand-lg py-3 bg-white shadow">
+            <div class="container">
+                <a class="navbar-brand fw-bold" style="color:#2E8B57;">
+                    <img src="{{ url_for('static', filename='img/logotipo.png') }}" class="img-fluid"
+                        style="max-height: 80px;" alt="lopgotipo">
+                    {% block titulo %}{% endblock %}</a>
 
-            <div class="collapse navbar-collapse" id="nav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/inicio">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Iniciar sesion</a></li>
-                    <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/crearCuenta">Crear cuenta</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Recetas</a></li>
-                </ul>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+
+                <div class="collapse navbar-collapse" id="nav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/sesion">Iniciar sesion</a></li>
+                        <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/crearCuenta">Crear cuenta</a></li>
+                        <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/usuario">Personal</a></li>
+                    </ul>
+
+                    {% if session.get("loggeado") %}
+                    <div>
+                        <p>Bienvenido{{session.get("usuario")}}</p>
+                    </div>
+                    {% endif %}
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-        {% block menu %}
-        {% endblock menu %}
-    <footer class="text-center py-3" style="background-color:#2E8B57; color:white;">
-            NutriApp
+    {% block menu %}
+    {% endblock menu %}
+    <footer class="text-center text-white py-3 container-fluid" style="background-color:#2E8B57;">
+        NutriApp
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"crossorigin="anonymous"></script>
 </body>
+
 </html>

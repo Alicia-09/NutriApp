@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block pagina %}
+Iniciar sesion
+{% endblock %}
+
+{% block titulo %}
+Iniciar sesion
+{% endblock %}
+
+{% block menu %}
+<div class="container my-5 justify-content-center">
+    <div class="col-lg-8 col-md-10">
+        <div class="card shadow-lg rounded-4 border-0">
+            <div class="card-body p-4 p-md-5">
+                <div class="text-center mb-3 ">
+
+                    <div class="container mt-2">
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                        {% for category, message in messages %}
+                        <div class="alert alert-{{ 'danger' if category == 'error' else 'success' }} alert-dismissible fade show"
+                            role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                    </div>
+
+                    <h1 class="text-success fw-bold">Iniciar sesion</h1>
+                    <p class="text-succes">Bienvenido denuevo</p>
+
+                    <form method="POST" action="{{ url_for('ValidaSesion') }}">
+
+
+                        <div class="mb-4">
+                            <label for="Email" class="form-label"></label>
+                            <input type="email" class="form-control" id="Email" name="Email"
+                                placeholder="Correo electronico" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                                value="{{ request.form.get('Email', '')}}">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="Contra" class="form-label"></label>
+                            <input type="password" class="form-control" id="Contra" name="Contra"
+                                placeholder="Contraseña" aria-describedby="passwordHelp"
+                                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                title="Debe contener al menos un número, una mayúscula, una minúscula y al menos 8 caracteres con 1 especial">
+                            <div id="passwordHelp" class="form-text">
+                                Minimo 8 caracteres, incluye mayusculas, minusculas y un digito
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn bg-success text-white">Ingresar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% endblock menu %}
