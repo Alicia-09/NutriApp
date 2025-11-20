@@ -1,0 +1,54 @@
+body {
+    background-color: #ffffff;
+    color: #333;
+}
+
+/*secciones*/
+
+.seccion-clara {
+    background-color: #FFEDD9;
+}
+
+seccion-gris {
+    background-color: #F7F7F7;
+}
+
+/*titulos*/
+
+.titulo-naranja {
+    color: #FF904D;
+}
+
+.titulo-verde {
+     color: #7CC6A5;
+}
+
+/*botones*/
+
+.boton-naranja {
+    background-color: #FF904D;
+    color: white;
+    border: none;
+}
+
+.boton-verde {
+    background-color: #7CC6A5;
+    color: white;
+    border: none;
+}
+
+/*tarjetas*/
+
+.card-custom {
+    border: none;
+    background-color: white;
+    border-radius: 10px;
+}    
+
+.card-custom .card-title {
+    color: #FF904D;
+}
+
+.img-round {
+    border-radius: 10px;
+}

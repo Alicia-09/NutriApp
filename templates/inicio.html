@@ -10,27 +10,27 @@ NutriApp
 
 {% block menu %}
 
-    <div style="background-color:#E9F7EF;">
+   <div class="seccion-clara">
         <div class="container py-5">
             <div class="row align-items-center">
+
                 <div class="col-md-6">
-                    <h1 class="fw-bold mb-3">
+                    <h1 class="titulo-naranja fw-bold">
                         Transformando tu Bienestar a traves de una alimentacion saludable
                     </h1>
 
-                    <p class="text-secondary mb-4">
+                    <p class="texto-secundario mb-4">
                         Nuestro proposito es ayudar a miles de personas a lograr una alimentacion mas sana
                         de manera simple, efectiva y adaptada a ti.
                         Descubre la gran cantidad de herramientas con las que contamos y explora nuestra app
                         sumergiendote en un nutrimundo lleno de informacion valiosa que te servira para comenzar un cambio en tu vida.
                     </p>
 
-                    <a class="btn btn-success btn-lg mb-4" href="http://127.0.0.1:5000/crearCuenta">Comenzar gratis</a><br>
-                    <small>¿Ya tienes cuenta? <a href="http://127.0.0.1:5000/sesion">Iniciar Sesión</a></small>
+                    <a class="btn boton-verde btn-lg mb-4" href="http://127.0.0.1:5000/crearCuenta">Comenzar gratis</a>
                 </div>
 
                 <div class="col-md-6 text-center mt-4 mt-md-0">
-                    <img src="{{ url_for('static', filename='img/app.png') }}"
+                    <img src="{{ url_for('static', filename='styles/img/app.png') }}"
                         class="img-fluid" 
                         alt="app en teléfono">
                 </div>
@@ -38,18 +38,19 @@ NutriApp
         </div>-
     </div>
 
-    <div style="background-color:#E9F7EF;">
+    <div class="seccion-clara">
         <div class="container py-5">
             <div class="row align-items-center">
 
                 <div class="col-md-6 text-center mb-4 mb-md-0">
-                    <img src="{{ url_for('static', filename='img/comida.jpg') }}"
-                        class="img-fluid rounded shadow-sm" alt="comida saludable">
+                    <img src="{{ url_for('static', filename='styles/img/comida.jpg') }}"
+                        class="img-fluid rounded shadow-sm" 
+                        alt="comida saludable">
                 </div>
 
                 <div class="col-md-6">
-                    <h3 class="fw-bold" style="color:#2E8B57;">Alcanza tus objetivos</h3>
-                    <p class="text-secondary">
+                    <h3 class="titulo-verde fw-bold">Alcanza tus objetivos</h3>
+                    <p class="texto-secundario">
                         Te ayudaremos a llevar un control diario de tu alimentacion dasndote recomendacionesy ayudandote a llegar a tu objetivo con nuestras herramientas que son muy faciles de usar.Nuestro proposito es mejorar tu alimentacion adaptandonos de la mejor manera posible a tus objetivos.
                     </p>
                     <ul>
@@ -64,19 +65,19 @@ NutriApp
         </div>
     </div>
 
-    <section class="py-5" style="background-color: #E3F2FD;;">
+   <section class="py-5 seccion-gris">
         <div class="container">
-            <h2 class="text-center fw-bold mb-5" style="color: #1D7ED1;">Explora las herramientas</h2>
+            <h2 class="text-center titulo-naranja mb-5">Explora las herramientas</h2>
 
             <div class="row g-4">
 
                 <div class="col-md-3">
-                    <div class="card border-0 shadow h-100">
-                        <img src="{{ url_for('static', filename='img/recetas saludables.jpg') }}" class="card-img-top"
+                    <div class="card card-custom shadow h-100">
+                        <img src="{{ url_for('static', filename='styles/img/recetas saludables.jpg') }}" class="card-img-top"
                         alt="Recetas saludables">
                         <div class="card-body">
-                            <h5 class="card-title fw-bold" style="color: #1D7ED1;">Recetas saludables</h5>
-                            <p class="card-text">
+                            <h5 class="card-title fw-bold">Recetas saludables</h5>
+                            <p class="card-text texto-secundario">
                             Te daremos recetas saludables, faciles de preparar por si eres primeriso en la cocina y muy accesibles,
                             con precios variados y la lista de productos con su nombre para que los encuentres facilmente en el supermercado.
                             </p>
@@ -85,12 +86,13 @@ NutriApp
                 </div>
 
                 <div class="col-md-3">
-                    <div class="card border-0 shadow h-100">
-                        <img src="{{ url_for('static', filename='img/avances.jpg') }}" class="card-img-top"
+                    <div class="card card-custom shadow h-100">
+                        <img src="{{ url_for('static', filename='styles/img/avances.jpg') }}" 
+                        class="card-img-top"
                         alt="Proceso">
                         <div class="card-body">
-                            <h5 class="card-title fw-bold" style="color: #1D7ED1;">Seguimiento del Progreso</h5>
-                            <p class="card-text">
+                            <h5 class="card-title fw-bold">Seguimiento del Progreso</h5>
+                            <p class="card-text texto-secundario">
                                 Observa tus avances en graficas sencillas y faciles de comprender, ademas te daremos
                                 recomendaciones de que puedes mejorar para que tus avances sean aun mas efectivo.
                             </p>
@@ -100,12 +102,12 @@ NutriApp
 
 
                 <div class="col-md-3">
-                    <div class="card border-0 shadow h-100">
-                        <img src="{{ url_for('static', filename='img/plan perso.jpg') }}" class="card-img-top"
+                    <div class="card card-custom shadow h-100">
+                        <img src="{{ url_for('static', filename='styles/img/plan perso.jpg') }}" class="card-img-top"
                         alt="Planes personales">
                         <div class="card-body">
-                            <h5 class="card-title fw-bold" style="color: #1D7ED1;">Planes Personalizados</h5>
-                            <p class="card-text">
+                            <h5 class="card-title fw-bold">Planes Personalizados</h5>
+                            <p class="card-text texto-secundario">
                                 Obten planes semanales segun tu edad y objetivos: plan semanal completo de compras y
                                 recetas, ademas de ejercicios segun lo que busques.Lleva un control diario de lo que
                                 consumes para mantener una nutrición equilibrada.
@@ -116,12 +118,12 @@ NutriApp
 
                 
                 <div class="col-md-3">
-                    <div class="card border-0 shadow h-100">
-                        <img src="{{ url_for('static', filename='img/recetas saludables.jpg') }}" class="card-img-top"
+                    <div class="card card-custom shadow h-100">
+                        <img src="{{ url_for('static', filename='styles/img/recetas saludables.jpg') }}" class="card-img-top"
                         alt="Recetas saludables">
                         <div class="card-body">
-                            <h5 class="card-title fw-bold" style="color: #1D7ED1;">Asesoramiento con nutriologos</h5>
-                            <p class="card-text">
+                            <h5 class="card-title fw-bold">Asesoramiento con nutriologos</h5>
+                            <p class="card-text texto-secundario">
                                 Te daremos recomendaciones de nutriologos que pueden variar en precios para que puedas seleccionar el de tu preferencia y asesorarte con un nutriologo si haci lo deseas.
                             </p>
                         </div>

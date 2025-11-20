@@ -7,6 +7,8 @@
     <title>{% block pagina %}{% endblock %}</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/estilos.css') }}">
+
 </head>
 
 <body>
@@ -16,7 +18,7 @@
         <nav class="navbar navbar-expand-lg py-3 bg-white shadow">
             <div class="container">
                 <a class="navbar-brand fw-bold" style="color:#2E8B57;">
-                    <img src="{{ url_for('static', filename='img/logotipo.png') }}" class="img-fluid"
+                    <img src="{{ url_for('static', filename='styles/img/logotipo.png') }}" class="img-fluid"
                         style="max-height: 80px;" alt="lopgotipo">
                     {% block titulo %}{% endblock %}</a>
 
@@ -31,6 +33,8 @@
                         <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/sesion">Iniciar sesion</a></li>
                         <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/crearCuenta">Crear cuenta</a></li>
                         <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/usuario">Personal</a></li>
+                        <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/educacion">Educacion</a></li>
+                        <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/calculadoras">Calculadoras</a></li>
                     </ul>
 
                     {% if session.get("loggeado") %}

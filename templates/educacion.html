@@ -1,42 +1,159 @@
 {% extends 'base.html' %}
 
 {% block pagina %}
-Educacion e Informacion
+Educación
 {% endblock %}
 
 {% block titulo %}
-Educacion e Informacion
+Módulo de Educación e Información
 {% endblock %}
 
 {% block menu %}
+<section class="py-5" style="background-color:#F9F9F9;">
+    <div class="container">
 
-<div style="background-color:#E9F7EF;">
-    <div class="container py-5">
-        <div class="row align-items-center">
+        <h2 class="fw-bold text-center mb-5" style="color:#FF7B00;">
+            Modulo de educacion y enformacion
+        </h2>
+
+        <div class="row g-4">
+
             <div class="col-md-6">
-                <h1 class="fw-bold mb-3">
-
-                    <div class="col-md-6 text-center mt-4 mt-md-0">
-                        <img src="{{ url_for('static', filename='img/app.png') }}"
-                            class="img-fluid" 
-                            alt="">
-
-                    Educacion e Informacion
-                </h1>
-
-                <p class="text-secondary mb-4">
-                    Nuestro proposito es ayudar a miles de personas a lograr una alimentacion mas sana
-                    de manera simple, efectiva y adaptada a ti.
-                    Descubre la gran cantidad de herramientas con las que contamos y explora nuestra app
-                    sumergiendote en un nutrimundo lleno de informacion valiosa que te servira para comenzar un cambio en tu vida.
-                </p>
+                <div class="card shadow-sm border-0" style="border-radius:18px;">
+                    <div class="row g-0">
+                        <div class="col-4">
+                            <img src="https://via.placeholder.com/300x300"
+                                 class="img-fluid rounded-start"
+                                 alt="Imagen"
+                                 style="object-fit:cover; height:100%;">
+                        </div>
+                        <div class="col-8">
+                            <div class="card-body text-center">
+                                <h5 class="fw-bold" style="color:#FF7B00;">
+                                    ¿Cómo leer las etiquetas nutricionales?
+                                </h5>
+                                <p class="text-muted small">
+                                    Aprende a identificar calorias, porciones y nutrientes esenciales.
+                                </p>
+                                 <a class="btn text-white" style="background-color:#4CAF50; border-radius:12px;">Leer más</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="col-md-6 text-center mt-4 mt-md-0">
-                <img src="{{ url_for('static', filename='img/app.png') }}"
-                    class="img-fluid" 
-                    alt="app en teléfono">
+             <div class="col-md-6">
+                <div class="card shadow-sm border-0" style="border-radius:18px;">
+                    <div class="row g-0">
+                        <div class="col-4">
+                            <img src="https://via.placeholder.com/300x300"
+                                 class="img-fluid rounded-start"
+                                 alt="Imagen"
+                                 style="object-fit:cover; height:100%;">
+                        </div>
+                        <div class="col-8">
+                            <div class="card-body text-center">
+                                <h5 class="fw-bold" style="color:#FF7B00;">
+                                    Mitos y verdades sobre dietas populares
+                                </h5>
+                                <p class="text-muted small">
+                                    Descubre qué funciona realmente y qué es solo tendencia.
+                                </p>
+                                 <a class="btn text-white" style="background-color:#4CAF50; border-radius:12px;">Leer más</a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <div class="col-md-6">
+                <div class="card shadow-sm border-0" style="border-radius:18px;">
+                    <div class="row g-0">
+                        <div class="col-4">
+                            <img src="https://via.placeholder.com/300x300"
+                                 class="img-fluid rounded-start"
+                                 alt="Imagen"
+                                 style="object-fit:cover; height:100%;">
+                        </div>
+                        <div class="col-8">
+                            <div class="card-body text-center">
+                                <h5 class="fw-bold" style="color:#FF7B00;">
+                                    Guía sobre macronutrientes
+                                </h5>
+                                <p class="text-muted small">
+                                    Aprende para qué sirven las proteínas, grasas y carbohidratos.
+                                </p>
+                                 <a class="btn text-white" style="background-color:#4CAF50; border-radius:12px;">Leer más</a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <div class="col-md-6">
+                <div class="card shadow-sm border-0" style="border-radius:18px;">
+                    <div class="row g-0">
+                        <div class="col-4">
+                            <img src="https://via.placeholder.com/300x300"
+                                 class="img-fluid rounded-start"
+                                 alt="Imagen"
+                                 style="object-fit:cover; height:100%;">
+                        </div>
+                        <div class="col-8">
+                            <div class="card-body text-center">
+                                <h5 class="fw-bold" style="color:#FF7B00;">
+                                    Importancia de la hidratación
+                                </h5>
+                                <p class="text-muted small">
+                                    Conoce cómo influye el agua en el rendimiento y la salud.
+                                </p>
+                                <a class="btn text-white" style="background-color:#4CAF50; border-radius:12px;">Leer más</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section class="py-5" style="background-color:#FFF4E6;">
+    <div class="container">
+
+        <h2 class="fw-bold text-center mb-5" style="color:#FF7B00;">
+            Recursos Descargables
+        </h2>
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+
+                <div class="card border-0 shadow p-4" style="border-radius:22px; background-color:white;">
+                    <div class="d-flex">
+                        <div class="me-3">
+                            <i class="bi bi-file-earmark-arrow-down fs-1" style="color:#4CAF50;"></i>
+                        </div>
+
+                        <div>
+                            <h4 class="fw-bold" style="color:#FF7B00;">Planillas de ejercicios básicos</h4>
+                            <p class="text-muted mb-3">
+                                Rutinas simples para comenzar a complementar tu alimentación.
+                            </p>
+                            <a class="btn text-white px-4"
+                               style="background-color:#FF7B00; border-radius:12px;">
+                                Descargar PDF
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-    </div>-
-</div>
+
+    </div>
+</section>
+
+        {% endblock %}

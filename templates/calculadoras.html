@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block pagina %}
+Educación
+{% endblock %}
+
+{% block titulo %}
+Módulo de Educación e Información
+{% endblock %}
+
+{% block menu %}
+<section class="seccion-gris py-5">
+    <div class="container">
+        <h2 class="text-center titulo-naranja mb-5">Calculadoras Nutricionales</h2>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+                <div class="card-custom p-4 h-100 text-center">
+                    <h5 class="card-title">Calculadora de IMC</h5>
+                    <p class="texto-secundario">Determina tu Índice de Masa Corporal y conoce tu rango saludable.</p>
+                    <a href="http://127.0.0.1:5000/IMC" class="btn boton-naranja">Calcular</a>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card-custom p-4 h-100 text-center">
+                    <h5 class="card-title">Calculadora de TMB</h5>
+                    <p class="texto-secundario">Calcula tu metabolismo basal para conocer cuántas calorías gastas en
+                        reposo.</p>
+                    <a href="#" class="btn boton-naranja">Calcular</a>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card-custom p-4 h-100 text-center">
+                    <h5 class="card-title">Gasto Calórico Total (GCT)</h5>
+                    <p class="texto-secundario">Descubre cuántas calorías quemas al día según tu actividad física.</p>
+                    <a href="#" class="btn boton-naranja">Calcular</a>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card-custom p-4 h-100 text-center">
+                    <h5 class="card-title">Peso Corporal Ideal</h5>
+                    <p class="texto-secundario">Averigua tu peso recomendado basado en tu estatura y complexión.</p>
+                    <a href="#" class="btn boton-verde">Calcular</a>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card-custom p-4 h-100 text-center">
+                    <h5 class="card-title">Calculadora de Macronutrientes</h5>
+                    <p class="texto-secundario">Obtén tus porciones ideales de proteínas, grasas y carbohidratos.</p>
+                    <a href="#" class="btn boton-verde">Calcular</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

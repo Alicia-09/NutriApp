@@ -105,5 +105,30 @@ def usuario():
 def educacion():
     return render_template("educacion.html")
 
+@app.route("/calculadoras")
+def calculadoras():
+    return render_template("calculadoras.html")
+
+@app.route("/IMC", methods=["GET"])
+def IMC():
+    return render_template("IMC.html")
+
+@app.route("/calcular_imc", methods=["POST"])
+def calcular_imc():
+    resultado = None
+
+    if request.method == "POST":
+        try:
+           peso = float(request.form["peso"])
+           altura = float(request.form["altura"])
+
+           if altura > 0:
+               resultado = (peso / (altura ** 2 ))
+
+        except:
+            resultado= "Error"
+
+    return render_template ("IMC.html", resultado=resultado)
+
 if __name__ == "__main__":
     app.run(debug=True)
