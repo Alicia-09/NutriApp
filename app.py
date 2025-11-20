@@ -119,16 +119,20 @@ def calcular_imc():
 
     if request.method == "POST":
         try:
-           peso = float(request.form["peso"])
-           altura = float(request.form["altura"])
+            peso = float(request.form["peso"])
+            altura = float(request.form["altura"])
 
-           if altura > 0:
+            if altura > 0:
                resultado = (peso / (altura ** 2 ))
 
         except:
             resultado= "Error"
 
     return render_template ("IMC.html", resultado=resultado)
+
+@app.route("/TMB")
+def TMB():
+    return render_template("TMB.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
