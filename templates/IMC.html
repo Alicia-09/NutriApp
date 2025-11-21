@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block pagina %}
-Educación
+Calculadoras
 {% endblock %}
 
 {% block titulo %}
@@ -21,39 +21,48 @@ Calculadora de Indice de Masa
 
                     <form method="POST" action="{{ url_for('calcular_imc') }}">
 
-                    <div class="mb-3">
-                        <label class="form-label titulo-verde">Peso (kg)</label>
-                        <input type="number" step="0.1" class="form-control" name="peso" id="peso"
-                            placeholder="Peso actual en kg">
-                    </div>
+                        <div class="mb-3">
+                            <label class="form-label titulo-verde">Peso (kg)</label>
+                            <input type="number" step="0.1" class="form-control" name="peso" id="peso"
+                                placeholder="Peso actual en kg">
+                        </div>
 
 
-                    <div class="mb-3">
-                        <label class="form-label titulo-verde">Altura (m)</label>
-                        <input type="number" step="0.1" class="form-control" name="altura" id="altura"
-                            placeholder="Altura actual en metros ej. 1.60">
-                    </div>
-                    
-                    <div class="text-center">
-                    <button type="submit" class="btn  boton-naranja">Calcular IMC</button>
-                    </div>
-                
-                </form>
+                        <div class="mb-3">
+                            <label class="form-label titulo-verde">Altura (m)</label>
+                            <input type="number" step="0.1" class="form-control" name="altura" id="altura"
+                                placeholder="Altura actual en metros ej. 1.60">
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn  boton-naranja">Calcular IMC</button>
+                        </div>
+
+                    </form>
 
                 </div>
             </div>
         </div>
 
         {% if resultado %}
-        <div class="row justify-content-center mt-4">
-            <div class="col-md-6">
-                <div class="alert alert-info text-center">
-                    <h4 class="fw-bold">Tu IMC es: {{ resultado }}</h4>
-                </div>
-            </div>
+        <div class="alert alert-success text-center mt-4">
+            <h4 class="fw-bold">Tu IMC es: {{ resultado }}</h4>
         </div>
         {% endif %}
 
+<div class="container mt-2">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{ 'danger' if category == 'error' else 'success' }} alert-dismissible fade show"
+                role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
 
     </div>
 </div>

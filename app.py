@@ -13,6 +13,15 @@ USUARIOS_REGISTRADOS = {
 
 }
 
+FA = {
+    "sedentario": 1.2,
+    "ligera": 1.375,
+    "moderada": 1.55,
+    "alta": 1.725,
+    "intensa": 1.9
+
+}
+
 @app.route("/")
 def inicio():
     return render_template("inicio.html")
@@ -109,30 +118,173 @@ def educacion():
 def calculadoras():
     return render_template("calculadoras.html")
 
-@app.route("/IMC", methods=["GET"])
+@app.route("/IMC")
 def IMC():
     return render_template("IMC.html")
 
-@app.route("/calcular_imc", methods=["POST"])
+@app.route("/calcular_imc", methods=["GET", "POST"])
 def calcular_imc():
     resultado = None
 
     if request.method == "POST":
         try:
-            peso = float(request.form["peso"])
-            altura = float(request.form["altura"])
+            peso = float(request.form.get("peso"))
+            altura = float(request.form.get("altura"))
 
             if altura > 0:
                resultado = (peso / (altura ** 2 ))
 
         except:
-            resultado= "Error"
+            flash ("Error, ingrese denuevo los datos")
+            return render_template("IMC.html")
 
     return render_template ("IMC.html", resultado=resultado)
 
 @app.route("/TMB")
 def TMB():
     return render_template("TMB.html")
+
+@app.route("/calcular_tmb", methods=["GET", "POST"])
+def calcular_tmb():
+    resultado = None
+
+    if request.method == "POST":
+        try:
+            sexo = request.form.get("sexo")
+            peso = float(request.form.get("peso"))
+            altura = float(request.form.get("altura"))
+            edad = int(request.form.get("edad"))
+
+            if sexo == "hombre":
+                resultado = (10 * peso) + (6.25 * altura) - (5 * edad) + 5
+
+            elif sexo == "mujer":
+                resultado = (10 * peso) + (6.25 * altura) - (5 * edad) - 161
+
+        except:
+            flash ("Error, ingrese denuevo los datos")
+            return render_template("TMB.html")
+
+    return render_template("TMB.html", resultado=resultado)
+
+@app.route("/GCT")
+def GCT():
+    return render_template("GCT.html")
+
+@app.route("/calcular_gct", methods=["GET", "POST"])
+def calcular_gct():
+    resultado = None
+
+    if request.method == "POST":
+        try:
+            sexo = request.form.get("sexo")
+            peso = float(request.form.get("peso"))
+            altura = float(request.form.get("altura"))
+            edad = int(request.form.get("edad"))
+            actividad = request.form.get("actividad")
+
+            if sexo == "hombre":
+                resultado = (10 * peso) + (6.25 * altura) - (5 * edad) + 5
+
+            elif sexo == "mujer":
+                resultado = (10 * peso) + (6.25 * altura) - (5 * edad) - 161
+
+            factor = FA.get(actividad, 1)
+
+            resultado = (resultado * factor)
+
+        except:
+            flash ("Error, ingrese denuevo los datos")
+            return render_template("GCI.html")
+        
+    return render_template("GCT.html", resultado=resultado)
+
+
+
+@app.route("/PCI")
+def PCI():
+    return render_template("PCI.html")
+
+@app.route("/calcular_pci", methods=["GET", "POST"])
+def calcular_pci():
+
+    if request.method == "POST":
+        try:
+            altura = float(request.form["altura"])
+            peso = float(request.form["peso"])
+
+            peso_min = 18.5 * (altura ** 2)
+            peso_max = 24.9 * (altura ** 2)
+
+            if peso < peso_min:
+                rango = "Estas por debajo de tu peso ideal"
+
+            elif peso > peso_max:
+                rango = "Estas por encima de tu peso ideal"
+            
+            else:
+                rango = "Estas dentro de tu peso ideal"
+
+        except:
+            flash ("Error, ingrese denuevo los datos")
+            return render_template("PCI.html")
+        
+    return render_template("PCI.html", 
+                                   peso_min = (peso_min),
+                                   peso_max = (peso_max),
+                                   rango = (rango))
+        
+@app.route("/MACRO")
+def MACRO():
+    return render_template("MACRO.html")
+
+@app.route("/calcular_macro", methods=["GET", "POST"])
+def calcular_macro():
+     if request.method == "POST":
+        try:
+         
+            sexo = request.form.get("sexo")
+            peso = float(request.form.get("peso"))
+            altura = float(request.form.get("altura"))
+            edad = int(request.form.get("edad"))
+            actividad = request.form.get("actividad")
+            objetivo = request.form.get("objetivo")
+
+            if sexo == "hombre":
+                    tmb = (10 * peso) + (6.25 * altura) - (5 * edad) + 5
+
+            elif sexo == "mujer":
+                    tmb = (10 * peso) + (6.25 * altura) - (5 * edad) - 161
+        
+            factor_actividad = FA[actividad]
+            calorias_diarias = tmb * factor_actividad
+
+            if objetivo == "bajar":
+                calorias_objetivo = calorias_diarias * 0.85
+            elif objetivo == "subir":
+                calorias_objetivo = calorias_diarias * 1.15
+            else:
+                calorias_objetivo = calorias_diarias
+
+            por_carbo = 0.50
+            por_prote = 0.25
+            por_grasas = 0.25
+
+            gramos_carbo = (calorias_objetivo * por_carbo) / 4
+            gramos_prote = (calorias_objetivo * por_prote) / 4
+            gramos_grasas = (calorias_objetivo * por_grasas) / 9
+
+        except:
+            flash ("Error, ingrese denuevo los datos")
+            return render_template("MACRO.html")
+        
+        return render_template("MACRO.html", 
+                                   calorias = (calorias_objetivo),
+                                   carbo = (gramos_carbo),
+                                   prote = (gramos_prote),
+                                   grasas = (gramos_grasas)) 
+        
+
 
 if __name__ == "__main__":
     app.run(debug=True)
