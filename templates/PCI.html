@@ -44,6 +44,7 @@ Calculadora de Peso Corporal Ideal
             </div>
         </div>
 
+        <!-- mensaje de resultado -->
         {% if peso_min %}
         <div class="alert alert-success text-center mt-4">
             <h4 class="fw-bold">Tu rango de peso ideal es: {{ peso_min }} kg - {{ peso_max }} kg</h4>
@@ -56,6 +57,7 @@ Calculadora de Peso Corporal Ideal
         </div>
         {% endif %}
 
+        <!-- mensaje de error -->
         <div class="container mt-2">
             {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}

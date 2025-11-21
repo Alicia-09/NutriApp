@@ -131,9 +131,11 @@ def calcular_imc():
             peso = float(request.form.get("peso"))
             altura = float(request.form.get("altura"))
 
-            if altura > 0:
-               resultado = (peso / (altura ** 2 ))
-
+            if altura < 3 and altura >0:
+               resultado = round((peso / (altura ** 2 )),2)
+            else:
+                flash ("Error, Altura no valida","error")
+                
         except:
             flash ("Error, ingrese denuevo los datos")
             return render_template("IMC.html")
@@ -156,10 +158,10 @@ def calcular_tmb():
             edad = int(request.form.get("edad"))
 
             if sexo == "hombre":
-                resultado = (10 * peso) + (6.25 * altura) - (5 * edad) + 5
+                resultado = round(((10 * peso) + (6.25 * altura) - (5 * edad) + 5),2)
 
             elif sexo == "mujer":
-                resultado = (10 * peso) + (6.25 * altura) - (5 * edad) - 161
+                resultado = round(((10 * peso) + (6.25 * altura) - (5 * edad) - 161), 2)
 
         except:
             flash ("Error, ingrese denuevo los datos")
@@ -191,15 +193,13 @@ def calcular_gct():
 
             factor = FA.get(actividad, 1)
 
-            resultado = (resultado * factor)
+            resultado = round((resultado * factor), 2)
 
         except:
             flash ("Error, ingrese denuevo los datos")
             return render_template("GCI.html")
         
     return render_template("GCT.html", resultado=resultado)
-
-
 
 @app.route("/PCI")
 def PCI():
@@ -213,8 +213,8 @@ def calcular_pci():
             altura = float(request.form["altura"])
             peso = float(request.form["peso"])
 
-            peso_min = 18.5 * (altura ** 2)
-            peso_max = 24.9 * (altura ** 2)
+            peso_min = round(18.5 * (altura ** 2), 2)
+            peso_max = round(24.9 * (altura ** 2), 2)
 
             if peso < peso_min:
                 rango = "Estas por debajo de tu peso ideal"
@@ -230,9 +230,9 @@ def calcular_pci():
             return render_template("PCI.html")
         
     return render_template("PCI.html", 
-                                   peso_min = (peso_min),
-                                   peso_max = (peso_max),
-                                   rango = (rango))
+                                peso_min = (peso_min),
+                                peso_max = (peso_max),
+                                rango = (rango))
         
 @app.route("/MACRO")
 def MACRO():
@@ -240,9 +240,9 @@ def MACRO():
 
 @app.route("/calcular_macro", methods=["GET", "POST"])
 def calcular_macro():
-     if request.method == "POST":
+    if request.method == "POST":
         try:
-         
+            
             sexo = request.form.get("sexo")
             peso = float(request.form.get("peso"))
             altura = float(request.form.get("altura"))
@@ -257,12 +257,12 @@ def calcular_macro():
                     tmb = (10 * peso) + (6.25 * altura) - (5 * edad) - 161
         
             factor_actividad = FA[actividad]
-            calorias_diarias = tmb * factor_actividad
+            calorias_diarias = round((tmb * factor_actividad), 2)
 
             if objetivo == "bajar":
-                calorias_objetivo = calorias_diarias * 0.85
+                calorias_objetivo = round((calorias_diarias * 0.85), 2)
             elif objetivo == "subir":
-                calorias_objetivo = calorias_diarias * 1.15
+                calorias_objetivo = round((calorias_diarias * 1.15), 2)
             else:
                 calorias_objetivo = calorias_diarias
 
@@ -270,21 +270,19 @@ def calcular_macro():
             por_prote = 0.25
             por_grasas = 0.25
 
-            gramos_carbo = (calorias_objetivo * por_carbo) / 4
-            gramos_prote = (calorias_objetivo * por_prote) / 4
-            gramos_grasas = (calorias_objetivo * por_grasas) / 9
+            gramos_carbo = round(((calorias_objetivo * por_carbo) / 4), 2)
+            gramos_prote = round(((calorias_objetivo * por_prote) / 4), 2)
+            gramos_grasas = round(((calorias_objetivo * por_grasas) / 9), 2)
 
         except:
             flash ("Error, ingrese denuevo los datos")
             return render_template("MACRO.html")
         
         return render_template("MACRO.html", 
-                                   calorias = (calorias_objetivo),
-                                   carbo = (gramos_carbo),
-                                   prote = (gramos_prote),
-                                   grasas = (gramos_grasas)) 
-        
-
+                                    calorias = (calorias_objetivo),
+                                    carbo = (gramos_carbo),
+                                    prote = (gramos_prote),
+                                    grasas = (gramos_grasas)) 
 
 if __name__ == "__main__":
     app.run(debug=True)
