@@ -1,16 +1,20 @@
 from flask import Flask, render_template,request,flash,url_for,redirect,session
+import requests
+
 
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'Ali091903'
 
+SPOONACULAR_API_KEY = '523486f7110648bf9f7af1d422f2f117'
+API_URL = 'https://api.spoonacular.com'
 
 USUARIOS_REGISTRADOS = {
-    "24308060610613@cetis61.edu.mx"
+    "24308060610613@cetis61.edu.mx":{
         "Nombre": "Alicia",
         "Apellido": "Campos",
         "Contra": "Ali091903."
-
+    }
 }
 
 FA = {
@@ -30,6 +34,12 @@ def inicio():
 def sesion():
     return render_template("sesion.html")
 
+@app.route('/cerrar_sesion')
+def cerrar_sesion():
+    session.clear()
+    flash('Has cerrado sesión correctamente', 'success')
+    return redirect(url_for('inicio'))
+
 @app.route('/ValidaSesion', methods=['GET', 'POST'])
 def ValidaSesion():
     if request.method == "POST":
@@ -40,7 +50,7 @@ def ValidaSesion():
             flash('Por favor ingresa email y contraseña', 'error')
             return redirect(url_for('sesion'))
 
-        if email not in USUARIOS_REGISTRADOS:
+        if not email in USUARIOS_REGISTRADOS:
             flash('Usuario no encontrado', 'error')
             return redirect(url_for('sesion'))
 
@@ -52,7 +62,7 @@ def ValidaSesion():
 
         session['usuario_email'] = email
         session['usuario'] = usuario['Nombre']
-        session['logueado'] = True
+        session['loggeado'] = True
 
         flash(f"Bienvenido {usuario['Nombre']}!", 'success')
         return redirect(url_for('inicio'))
@@ -85,7 +95,7 @@ def crearCuenta():
 
         session['usuario_email'] = email
         session['usuario'] = nombre
-        session['logueado'] = True
+        session['loggeado'] = True
 
         flash(f"Cuenta creada correctamente para el usuario:{nombre} {apellido}, continúa llenando tus datos", "success")
         return redirect(url_for("usuario"))
@@ -237,6 +247,47 @@ def calcular_pci():
 @app.route("/MACRO")
 def MACRO():
     return render_template("MACRO.html")
+
+@app.route("/buscar_recetas", methods=["GET", "POST"])
+def buscar_recetas():
+    query = request.args.get('query', '')
+    diet = request.args.get('diet', '')
+    
+    if query:
+        url = f"{API_URL}/recipes/complexSearch"
+        params = {
+            'apiKey': SPOONACULAR_API_KEY,
+            'query': query,
+            'number': 10,
+            'language': 'es',
+            'addRecipeInformation': True,
+            'instructionsRequired': True,
+            'addRecipeNutrition': True
+        }
+        
+        try:
+            response = requests.get(url, params=params)
+            resultados = response.json()
+        except requests.exceptions.RequestException as e:
+            print(f"Error en la API: {e}")
+            return None
+        
+        if resultados:
+            recetas = resultados['results']
+            
+            if diet:
+                recetas = [r for r in recetas if getattr(r, diet, False)]
+        
+            
+            return render_template("recetas.html", 
+                                recetas=recetas,
+                                query=query,
+                                diet=diet)
+        
+    return render_template("recetas.html", 
+                         recetas=[],
+                         query=query,
+                         diet=diet)
 
 @app.route("/calcular_macro", methods=["GET", "POST"])
 def calcular_macro():

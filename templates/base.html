@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/estilos.css') }}">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
@@ -30,18 +30,37 @@
                 <div class="collapse navbar-collapse" id="nav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/sesion">Iniciar sesion</a></li>
-                        <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/crearCuenta">Crear cuenta</a></li>
-                        <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/usuario">Personal</a></li>
                         <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/educacion">Educacion</a></li>
                         <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/calculadoras">Calculadoras</a></li>
-                    </ul>
-
-                    {% if session.get("loggeado") %}
-                    <div>
-                        <p>Bienvenido{{session.get("usuario")}}</p>
-                    </div>
+                        <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/buscar_recetas">Buscar Recetas</a></li>
+                    {% if session.loggeado %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle welcome-user" href="#" role="button" data-bs-toggle="dropdown">
+                                👋 {{ session.usuario }}
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="http://127.0.0.1:5000/perfil">
+                                    <i class="fas fa-user"></i> Mi Perfil
+                                </a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" href="http://127.0.0.1:5000/cerrar_sesion">
+                                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                                </a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link btn-login" href="http://127.0.0.1:5000/sesion">
+                                <i class="fas fa-sign-in-alt"></i> Iniciar sesion
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn-register" href="http://127.0.0.1:5000/crearCuenta">
+                                <i class="fas fa-user-plus"></i> Crear cuenta
+                            </a>
+                        </li>
                     {% endif %}
+                    </ul>
                 </div>
             </div>
         </nav>
