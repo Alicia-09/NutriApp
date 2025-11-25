@@ -1,18 +1,32 @@
 {% extends 'base.html' %}
+
+{% block pagina %}
+Recetas
+{% endblock %}
+
+{% block titulo %}
+Recetas
+{% endblock %}
+
 {% block menu %}
 <div class="seccion-clara">
     <div class="container mt-4">
         <div class="row">
+
+                <!--  columna izquierda -->
             <div class="col-lg-4">
-                <div class="card mb-4">
+                <div class="card card-custom mt-4 mb-4">
+
                     {% if receta.image %}
                     <img src="{{ receta.image }}" class="card-img-top" alt="{{ receta.title }}">
                     {% endif %}
+
                     <div class="card-body">
-                        <h1 class="h4 card-title">{{ receta.title }}</h1>
+                        <h1 class="h4 card-title titulo-naranja">{{ receta.title }}</h1>
                         
                         <!-- Metadatos -->
                         <div class="row text-center mb-3">
+
                             {% if receta.readyInMinutes %}
                             <div class="col-4">
                                 <div class="border rounded p-2">
@@ -56,11 +70,12 @@
                 </div>
             </div>
 
-            <!-- Columna Derecha - Contenido Principal -->
+            <!-- Columna Derecha -->
             <div class="col-lg-8">
+
                 <!-- Ingredientes -->
-                <div class="card mb-4" id="ingredientes">
-                    <div class="card-header">
+                <div class="card card-custom mb-4 mt-4" id="ingredientes">
+                    <div class="card-header titulo-verde">
                         <h5 class="card-title mb-0">
                             <i class="fas fa-shopping-basket"></i> Ingredientes
                         </h5>
@@ -87,8 +102,8 @@
                 </div>
 
                 <!-- Instrucciones -->
-                <div class="card mb-4">
-                    <div class="card-header">
+                <div class="card card-custom mb-4">
+                    <div class="card-header titulo-naranja">
                         <h5 class="card-title mb-0">
                             <i class="fas fa-list-ol"></i> Instrucciones
                         </h5>
@@ -103,6 +118,7 @@
                             {% for paso in instrucciones[0].steps %}
                             <li class="list-group-item">
                                 {{ paso.step }}
+
                                 {% if paso.ingredients %}
                                 <div class="mt-2">
                                     <small class="text-muted">
@@ -122,11 +138,12 @@
 
                 <!-- Información Adicional -->
                 <div class="row">
+
                     {% if receta.dishTypes %}
                     <div class="col-md-6 mb-3">
-                        <div class="card">
+                        <div class="card card-custom">
                             <div class="card-body">
-                                <h6 class="card-title">
+                                <h6 class="card-title titulo-verde">
                                     <i class="fas fa-utensils"></i> Tipo de Plato
                                 </h6>
                                 {% for tipo in receta.dishTypes %}
@@ -139,9 +156,9 @@
 
                     {% if receta.cuisines %}
                     <div class="col-md-6 mb-3">
-                        <div class="card">
+                        <div class="card card-custom">
                             <div class="card-body">
-                                <h6 class="card-title">
+                                <h6 class="card-title titulo-naranja">
                                     <i class="fas fa-globe"></i> Cocina
                                 </h6>
                                 {% for cocina in receta.cuisines %}

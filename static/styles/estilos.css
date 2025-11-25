@@ -9,7 +9,7 @@ body {
     background-color: #FFEDD9;
 }
 
-seccion-gris {
+.seccion-gris {
     background-color: #F7F7F7;
 }
 
@@ -51,4 +51,13 @@ seccion-gris {
 
 .img-round {
     border-radius: 10px;
+}
+
+.menu-color {
+    color: #2E8B57;
+    font-weight: 500;
+}
+
+.menu-color:hover {
+    color: #FF904D
 }

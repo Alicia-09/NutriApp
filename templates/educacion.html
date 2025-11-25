@@ -9,33 +9,33 @@ Módulo de Educación e Información
 {% endblock %}
 
 {% block menu %}
-<section class="py-5" style="background-color:#F9F9F9;">
+<section class="py-5" seccion-gris">
     <div class="container">
 
-        <h2 class="fw-bold text-center mb-5" style="color:#FF7B00;">
+        <h2 class="fw-bold text-center mb-5 titulo-naranja">
             Modulo de educacion y enformacion
         </h2>
 
         <div class="row g-4">
 
             <div class="col-md-6">
-                <div class="card shadow-sm border-0" style="border-radius:18px;">
+                <div class="card card-custom shadow-sm">
                     <div class="row g-0">
-                        <div class="col-4">
-                            <img src="https://via.placeholder.com/300x300"
-                                 class="img-fluid rounded-start"
-                                 alt="Imagen"
-                                 style="object-fit:cover; height:100%;">
+                        <div class="col-auto">
+                            <img src="{{ url_for('static', filename='styles/img/etiquetas.jpg') }}"
+                                 class="img-300 img-round"
+                                 alt="Imagen">
+
                         </div>
                         <div class="col-8">
                             <div class="card-body text-center">
-                                <h5 class="fw-bold" style="color:#FF7B00;">
+                                <h5 class="card-title">
                                     ¿Cómo leer las etiquetas nutricionales?
                                 </h5>
                                 <p class="text-muted small">
-                                    Aprende a identificar calorias, porciones y nutrientes esenciales.
+                                    Aprende a identificar nutrientes estás consumiendo.
                                 </p>
-                                 <a class="btn text-white" style="background-color:#4CAF50; border-radius:12px;">Leer más</a>
+                                 <a class="btn boton-verde">Leer mas</a>
                             </div>
                         </div>
                     </div>
@@ -43,23 +43,22 @@ Módulo de Educación e Información
             </div>
 
              <div class="col-md-6">
-                <div class="card shadow-sm border-0" style="border-radius:18px;">
+                <div class="card card-custom shadow-sm">
                     <div class="row g-0">
                         <div class="col-4">
-                            <img src="https://via.placeholder.com/300x300"
-                                 class="img-fluid rounded-start"
-                                 alt="Imagen"
-                                 style="object-fit:cover; height:100%;">
+                            <img src="{{ url_for('static', filename='styles/img/etiquetas.jpg') }}"
+                                 class="img-fluid img-round"
+                                 alt="Imagen">
                         </div>
                         <div class="col-8">
                             <div class="card-body text-center">
-                                <h5 class="fw-bold" style="color:#FF7B00;">
+                                <h5 class="card-title">
                                     Mitos y verdades sobre dietas populares
                                 </h5>
                                 <p class="text-muted small">
                                     Descubre qué funciona realmente y qué es solo tendencia.
                                 </p>
-                                 <a class="btn text-white" style="background-color:#4CAF50; border-radius:12px;">Leer más</a>
+                                 <a class="btn boton-verde">Leer mas</a>
                                 
                             </div>
                         </div>
@@ -68,23 +67,23 @@ Módulo de Educación e Información
             </div>
 
              <div class="col-md-6">
-                <div class="card shadow-sm border-0" style="border-radius:18px;">
+                <div class="card card-custom shadow-sm">
                     <div class="row g-0">
                         <div class="col-4">
-                            <img src="https://via.placeholder.com/300x300"
-                                 class="img-fluid rounded-start"
-                                 alt="Imagen"
-                                 style="object-fit:cover; height:100%;">
+                            <img src="{{ url_for('static', filename='styles/img/etiquetas.jpg') }}"
+                                 class="img-fluid img-round"
+                                 alt="Imagen">
+
                         </div>
                         <div class="col-8">
                             <div class="card-body text-center">
-                                <h5 class="fw-bold" style="color:#FF7B00;">
-                                    Guía sobre macronutrientes
+                                <h5 class="card-title">
+                                    Guia sobre macronutrientes
                                 </h5>
                                 <p class="text-muted small">
                                     Aprende para qué sirven las proteínas, grasas y carbohidratos.
                                 </p>
-                                 <a class="btn text-white" style="background-color:#4CAF50; border-radius:12px;">Leer más</a>
+                                 <a class="btn boton-verde">Leer mas</a>
                                 
                             </div>
                         </div>
@@ -93,23 +92,23 @@ Módulo de Educación e Información
             </div>
 
              <div class="col-md-6">
-                <div class="card shadow-sm border-0" style="border-radius:18px;">
+                <div class="card card-custom shadow-sm">
                     <div class="row g-0">
                         <div class="col-4">
                             <img src="https://via.placeholder.com/300x300"
-                                 class="img-fluid rounded-start"
-                                 alt="Imagen"
-                                 style="object-fit:cover; height:100%;">
+                                 class="img-fluid img-round"
+                                 alt="Imagen">
+
                         </div>
                         <div class="col-8">
                             <div class="card-body text-center">
-                                <h5 class="fw-bold" style="color:#FF7B00;">
+                                <h5 class="card-title">
                                     Importancia de la hidratación
                                 </h5>
                                 <p class="text-muted small">
                                     Conoce cómo influye el agua en el rendimiento y la salud.
                                 </p>
-                                <a class="btn text-white" style="background-color:#4CAF50; border-radius:12px;">Leer más</a>
+                                <a class="btn boton-verde">Leer mas</a>
                             </div>
                         </div>
                     </div>
@@ -121,29 +120,28 @@ Módulo de Educación e Información
     </div>
 </section>
 
-<section class="py-5" style="background-color:#FFF4E6;">
+<section class="py-5 seccion-clara">
     <div class="container">
 
-        <h2 class="fw-bold text-center mb-5" style="color:#FF7B00;">
+        <h2 class="fw-bold text-center mb-5 titulo-naranja">
             Recursos Descargables
         </h2>
 
         <div class="row justify-content-center">
             <div class="col-md-8">
 
-                <div class="card border-0 shadow p-4" style="border-radius:22px; background-color:white;">
+                <div class="card border-0 shadow p-4 card-custom">
                     <div class="d-flex">
                         <div class="me-3">
-                            <i class="bi bi-file-earmark-arrow-down fs-1" style="color:#4CAF50;"></i>
+                            <i class="bi bi-file-earmark-arrow-down fs-1 titulo-verde"></i>
                         </div>
 
                         <div>
-                            <h4 class="fw-bold" style="color:#FF7B00;">Planillas de ejercicios básicos</h4>
+                            <h4 class="fw-bold titulo-naranja">Planillas de ejercicios básicos</h4>
                             <p class="text-muted mb-3">
                                 Rutinas simples para comenzar a complementar tu alimentación.
                             </p>
-                            <a class="btn text-white px-4"
-                               style="background-color:#FF7B00; border-radius:12px;">
+                            <a class="btn boton-naranja px-4">
                                 Descargar PDF
                             </a>
                         </div>
