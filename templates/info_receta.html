@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+{% block menu %}
+<div class="seccion-clara">
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card mb-4">
+                    {% if receta.image %}
+                    <img src="{{ receta.image }}" class="card-img-top" alt="{{ receta.title }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h1 class="h4 card-title">{{ receta.title }}</h1>
+                        
+                        <!-- Metadatos -->
+                        <div class="row text-center mb-3">
+                            {% if receta.readyInMinutes %}
+                            <div class="col-4">
+                                <div class="border rounded p-2">
+                                    <i class="fas fa-clock text-primary"></i>
+                                    <div class="fw-bold">{{ receta.readyInMinutes }} min</div>
+                                    <small class="text-muted">Preparación</small>
+                                </div>
+                            </div>
+                            {% endif %}
+                            
+                            {% if receta.servings %}
+                            <div class="col-4">
+                                <div class="border rounded p-2">
+                                    <i class="fas fa-users text-success"></i>
+                                    <div class="fw-bold">{{ receta.servings }}</div>
+                                    <small class="text-muted">Porciones</small>
+                                </div>
+                            </div>
+                            {% endif %}
+                            
+                            {% if receta.healthScore %}
+                            <div class="col-4">
+                                <div class="border rounded p-2">
+                                    <i class="fas fa-heart text-danger"></i>
+                                    <div class="fw-bold">{{ receta.healthScore }}</div>
+                                    <small class="text-muted">Salud</small>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Badges de Dietas -->
+                        {% if receta.diets %}
+                        <div class="mb-3">
+                            {% for dieta in receta.diets %}
+                            <span class="badge bg-info me-1 mb-1">{{ dieta }}</span>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Columna Derecha - Contenido Principal -->
+            <div class="col-lg-8">
+                <!-- Ingredientes -->
+                <div class="card mb-4" id="ingredientes">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-shopping-basket"></i> Ingredientes
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        {% if receta.extendedIngredients %}
+                        <div class="row">
+                            {% for ingrediente in receta.extendedIngredients %}
+                            <div class="col-md-6 mb-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ing{{ loop.index }}">
+                                    <label class="form-check-label" for="ing{{ loop.index }}">
+                                        {{ ingrediente.amount }} {{ ingrediente.unit }} 
+                                        {{ ingrediente.name }}
+                                    </label>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        <p class="text-muted">No hay información de ingredientes disponible.</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Instrucciones -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-list-ol"></i> Instrucciones
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        {% if receta.instructions %}
+                        <div class="instructions-content">
+                            {{ receta.instructions|safe }}
+                        </div>
+                        {% elif instrucciones and instrucciones[0].steps %}
+                        <ol class="list-group list-group-numbered">
+                            {% for paso in instrucciones[0].steps %}
+                            <li class="list-group-item">
+                                {{ paso.step }}
+                                {% if paso.ingredients %}
+                                <div class="mt-2">
+                                    <small class="text-muted">
+                                        <strong>Ingredientes:</strong> 
+                                        {{ paso.ingredients|join(', ', attribute='name') }}
+                                    </small>
+                                </div>
+                                {% endif %}
+                            </li>
+                            {% endfor %}
+                        </ol>
+                        {% else %}
+                        <p class="text-muted">No hay instrucciones disponibles para esta receta.</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Información Adicional -->
+                <div class="row">
+                    {% if receta.dishTypes %}
+                    <div class="col-md-6 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">
+                                    <i class="fas fa-utensils"></i> Tipo de Plato
+                                </h6>
+                                {% for tipo in receta.dishTypes %}
+                                <span class="badge bg-secondary me-1">{{ tipo }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if receta.cuisines %}
+                    <div class="col-md-6 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">
+                                    <i class="fas fa-globe"></i> Cocina
+                                </h6>
+                                {% for cocina in receta.cuisines %}
+                                <span class="badge bg-warning me-1">{{ cocina }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

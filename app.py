@@ -289,6 +289,40 @@ def buscar_recetas():
                          query=query,
                          diet=diet)
 
+@app.route("/receta/<int:recipe_id>")
+def detalle_receta(recipe_id):
+    url_receta = f"{API_URL}/recipes/{recipe_id}/information"
+    
+    params_receta = {
+        'apiKey': SPOONACULAR_API_KEY,
+        'language': 'es',
+        'includeNutrition': True
+    }
+
+    url_instrucciones = f"{API_URL}/recipes/{recipe_id}/analyzedInstructions"
+    params_instrucciones = {
+        'apiKey': SPOONACULAR_API_KEY,
+        'language': 'es'
+    }
+    
+    try:
+        response = requests.get(url_receta, params=params_receta)
+        receta = response.json()
+
+        response = requests.get(url_instrucciones, params=params_instrucciones)
+        instrucciones_analizadas = response.json()
+    except requests.exceptions.RequestException as e:
+        print(f"Error obteniendo receta {recipe_id}: {e}")
+        return None
+    
+    if not receta:
+        flash('Receta no encontrada', 'error')
+        return redirect(url_for('buscar_recetas'))
+    
+    return render_template("info_receta.html",
+                         receta=receta,
+                         instrucciones=instrucciones_analizadas)
+
 @app.route("/calcular_macro", methods=["GET", "POST"])
 def calcular_macro():
     if request.method == "POST":
