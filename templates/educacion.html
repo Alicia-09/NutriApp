@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block pagina %}
-Educación
+Educacion
 {% endblock %}
 
 {% block titulo %}
-Módulo de Educación e Información
+Educacion
 {% endblock %}
 
 {% block menu %}
@@ -35,7 +35,7 @@ Módulo de Educación e Información
                                 <p class="text-muted small">
                                     Aprende a identificar que nutrientes estás consumiendo.
                                 </p>
-                                 <a href="http://127.0.0.1:5000/etiquetas" class="btn boton-verde">Leer mas</a>
+                                <a href="http://127.0.0.1:5000/etiquetas" class="btn boton-verde">Leer mas</a>
                             </div>
                         </div>
                     </div>
@@ -46,7 +46,7 @@ Módulo de Educación e Información
                 <div class="card card-custom shadow-sm">
                     <div class="row g-0">
                         <div class="col-4">
-                            <img src="{{ url_for('static', filename='styles/img/etiquetas.jpg') }}"
+                            <img src="{{ url_for('static', filename='styles/img/dieta.jpg') }}"
                                  class="img-fluid img-round"
                                  alt="Imagen">
                         </div>
@@ -70,7 +70,7 @@ Módulo de Educación e Información
                 <div class="card card-custom shadow-sm">
                     <div class="row g-0">
                         <div class="col-4">
-                            <img src="{{ url_for('static', filename='styles/img/etiquetas.jpg') }}"
+                            <img src="{{ url_for('static', filename='styles/img/macronutrientes2.png') }}"
                                  class="img-fluid img-round"
                                  alt="Imagen">
 
@@ -95,7 +95,7 @@ Módulo de Educación e Información
                 <div class="card card-custom shadow-sm">
                     <div class="row g-0">
                         <div class="col-4">
-                            <img src="https://via.placeholder.com/300x300"
+                            <img src="{{ url_for('static', filename='styles/img/hidratacion.jpg') }}"
                                  class="img-fluid img-round"
                                  alt="Imagen">
 

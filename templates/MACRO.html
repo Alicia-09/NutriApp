@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block pagina %}
-Educación
+Calculadoras
 {% endblock %}
 
 {% block titulo %}
@@ -108,7 +108,7 @@ Calculadoras
         </div>
         {% endif %}
 
-         <!-- mensaje de error -->
+        <!-- mensaje de error -->
         <div class="container mt-2">
             {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
@@ -136,7 +136,7 @@ Calculadoras
 <div class="container my-5">
     <div class="row align-items-center mb-5 g-4">
         <div class="col-lg-6">
-            <img src="{{ url_for('static', filename='styles/img/componentes_tmb.jpg') }}" class="img-fluid rounded img-round " alt="formula IMC">
+            <img src="{{ url_for('static', filename='styles/img/macronutrientes3.jpeg') }}" class="img-fluid rounded img-round " alt="formula IMC">
         </div>
 
         <div class="col-lg-6">
@@ -155,7 +155,14 @@ Calculadoras
                     <li>Superávit agresivo:+20% respecto a tu GED.</li>
                     <li>Superávit muy agresivo: +25% respecto a tu GED.</li>
                 </ul>
-
+        </div>
+    </div>
+    <div class="row align-items-center mb-5 g-4">
+        <div class="col-lg-6">
+            <img src="{{ url_for('static', filename='styles/img/formula_mc.jpg') }}" class="img-fluid rounded img-round " alt="formula IMC">
+        </div>
+            
+        <div class="col-lg-6">
             <p>Si tu objetivo es perder grasa corporal, la calculadora establece por defecto los siguientes valores para tu ingesta calórica diaria:</p>
                 <ul>
                     <li>Déficit ligero: -10% respecto a tu GED.</li>
@@ -176,7 +183,7 @@ Calculadoras
 
     <div class="row align-items-center mb-5 g-4 flex-lg-row-reverse">
         <div class="col-lg-6">
-            <img src="{{ url_for('static', filename='styles/img/componentes_tmb.jpg') }}" class="img-fluid rounded img-round " alt="formula IMC">
+            <img src="{{ url_for('static', filename='styles/img/perder_grasa.webp') }}" class="img-fluid rounded img-round " alt="formula IMC">
         </div>
         <div class="col-lg-6">
             <p>Por ejemplo, si tu objetivo principal es perder grasa corporal, estableces un déficit calórico diario a través de la alimentación y de la actividad física diaria, incluyendo entrenamiento de fuerza, pero no ingieres una dieta un poco más alta en proteínas en comparación con lo habías hecho en superávit o mantenimiento, es bastante probable que tu masa muscular se vea más perjudicada de lo que deseas (al menos, durante las primeras 2 o 3 semanas)</p>
@@ -184,7 +191,7 @@ Calculadoras
 
         <div class="row align-items-center mb-5 g-4">
         <div class="col-lg-6">
-            <img src="{{ url_for('static', filename='styles/img/componentes_tmb.jpg') }}" class="img-fluid rounded img-round " alt="formula IMC">
+            <img src="{{ url_for('static', filename='styles/img/ganar_masa.webp') }}" class="img-fluid rounded img-round " alt="formula IMC">
         </div>
         <div class="col-lg-6">
             <p>Del mismo modo, si tienes por objetivo aumentar masa muscular y has establecido superávit calórico acorde a tus necesidades, pero no planteas una distribución de macronutrientes acertada (por ejemplo, más cantidad de grasas de la que verdaderamente sería necesaria), entonces, tu cambio de composición corporal tampoco será como habrías deseado </p>
