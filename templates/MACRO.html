@@ -5,82 +5,94 @@ Educación
 {% endblock %}
 
 {% block titulo %}
-Calculadora de Macronutrientes
+Calculadoras
 {% endblock %}
 
 {% block menu %}
+<div class="padding-superior seccion-clara ">
+        <h1 class="text-center titulo-naranja">
+        Calculadora de Macronutrientes
+        </h1>
+</div>
 
+<div class="container-fluid seccion-gris py-5">
+    <!-- descripcion calculadora -->
+    <p class="text-center p-4">
+        Una vez definas cuántas calorías necesitas consumir para tu objetivo. Es necesario saber también los macros.
 
-<div class="container my-5 justify-content-center seccion-gris">
-    <div class="col-lg-8 col-md-10">
+        Con esta calculadora podrás calcular tus macronutrientes óptimos: carbohidratos, grasas y proteínas, en función de tu objetivo.
+    </p>
 
-        <h2 class="text-center titulo-naranja mb-3"></h2>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
 
-        <div class="card shadow-lg rounded-4 border-0">
-            <div class="card-body p-4 p-md-5">
-                <div class=" mb-3 ">
+                <div class="card shadow-lg rounded-4 border-0">
+                    <div class="card-body p-4 p-md-5">
+                        <div class=" mb-3 ">
 
-                    <form method="POST" action="{{ url_for('calcular_macro') }}">
+                            <form method="POST" action="{{ url_for('calcular_macro') }}">
 
-                    <div class="mb-3">
-                            <label for="sexo" class="form-label titulo-verde">Sexo</label>
-                            <select class="form-select" id="sexo" name="sexo">
-                                <option selected>Seleccione su sexo</option>
-                                <option value="hombre">Hombre</option>
-                                <option value="mujer">Mujer</option>
-                            </select>
-                        </div>
+                                <div class="mb-3">
+                                    <label for="sexo" class="form-label titulo-verde">Sexo</label>
+                                    <select class="form-select" id="sexo" name="sexo">
+                                        <option selected>Seleccione su sexo</option>
+                                        <option value="hombre">Hombre</option>
+                                        <option value="mujer">Mujer</option>
+                                    </select>
+                                </div>
 
-                        <!-- peso -->
-                        <div class="mb-3">
-                            <label class="form-label titulo-verde">Peso (kg)</label>
-                            <input type="number" step="0.1" class="form-control" name="peso" id="peso"
-                                placeholder="ejemplo 40">
-                        </div>
+                                <!-- peso -->
+                                <div class="mb-3">
+                                    <label class="form-label titulo-verde">Peso (kg)</label>
+                                    <input type="number" step="0.1" class="form-control" name="peso" id="peso"
+                                        placeholder="ejemplo 40">
+                                </div>
 
-                        <!-- altura -->
-                        <div class="mb-3">
-                            <label class="form-label titulo-verde">Altura (cm)</label>
-                            <input type="number" step="0.1" class="form-control" name="altura" id="altura"
-                                placeholder="ejemplo 160">
-                        </div>
+                                <!-- altura -->
+                                <div class="mb-3">
+                                    <label class="form-label titulo-verde">Altura (cm)</label>
+                                    <input type="number" step="0.1" class="form-control" name="altura" id="altura"
+                                        placeholder="ejemplo 160">
+                                </div>
 
-                        <!-- edad -->
-                        <div class="mb-3">
-                            <label class="form-label titulo-verde">Edad (años)</label>
-                            <input type="number" class="form-control" name="edad" id="edad" placeholder="ejemplo 20">
-                        </div>
+                                <!-- edad -->
+                                <div class="mb-3">
+                                    <label class="form-label titulo-verde">Edad (años)</label>
+                                    <input type="number" class="form-control" name="edad" id="edad" placeholder="ejemplo 20">
+                                </div>
 
                         
-                        <!-- nivel de actividad-->
-                        <div class="mb-3">
-                            <label for="actividad" class="form-label titulo-verde">Nivel de actividad</label>
-                            <select class="form-select" id="actividad" name="actividad">
-                                <option selected>Selecciona tu nivel</option>
-                                <option value="sedentario">Sedentario (Poco o nada de ejercicio)</option>
-                                <option value="ligera">Actividad ligera (Ejercicio 1-3 dias/semana)</option>
-                                <option value="moderada">Actividad Moderada (Ejercicio 3-5 dias/semana)</option>
-                                <option value="alta">Actividad Alta (Ejercicio 6-7 dias/semana)</option>
-                                <option value="intensa">Actividad Intensa (ejercicio muy intenso diario)</option>
-                            </select>
-                        </div>
+                                <!-- nivel de actividad-->
+                                <div class="mb-3">
+                                    <label for="actividad" class="form-label titulo-verde">Nivel de actividad</label>
+                                    <select class="form-select" id="actividad" name="actividad">
+                                        <option selected>Selecciona tu nivel</option>
+                                        <option value="sedentario">Sedentario (Poco o nada de ejercicio)</option>
+                                        <option value="ligera">Actividad ligera (Ejercicio 1-3 dias/semana)</option>
+                                        <option value="moderada">Actividad Moderada (Ejercicio 3-5 dias/semana)</option>
+                                        <option value="alta">Actividad Alta (Ejercicio 6-7 dias/semana)</option>
+                                        <option value="intensa">Actividad Intensa (ejercicio muy intenso diario)</option>
+                                    </select>
+                                </div>
 
-                        <div class="mb-3">
-                            <label for="objetivo" class="form-label titulo-verde">Objetivo principal</label>
-                            <select class="form-select" id="actividad" name="actividad">
-                                <option selected>Selecciona tu objetivo</option>
-                                <option value="ganar">Ganar masa muscular</option>
-                                <option value="perder">Perder masa muscular</option>
-                                <option value="mantener">Mantener mi peso</option>
-                            </select>
-                        </div>
+                                <div class="mb-3">
+                                    <label for="objetivo" class="form-label titulo-verde">Objetivo principal</label>
+                                    <select class="form-select" id="actividad" name="actividad">
+                                        <option selected>Selecciona tu objetivo</option>
+                                        <option value="ganar">Ganar masa muscular</option>
+                                        <option value="perder">Perder masa muscular</option>
+                                        <option value="mantener">Mantener mi peso</option>
+                                    </select>
+                                </div>
 
-                        <!-- boton -->
-                        <div class="text-center">
-                            <button type="submit" class="btn boton-naranja">Calcular IMC</button>
-                        </div>
+                                <!-- boton -->
+                                <div class="text-center">
+                                    <button type="submit" class="btn boton-naranja">Calcular IMC</button>
+                                </div>
 
-                    </form>
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -113,4 +125,81 @@ Calculadora de Macronutrientes
 
     </div>
 </div>
+
+<div class="p-4 seccion-clara">
+    <h3 class="text-center titulo-naranja mb-3">Información sobre Macronutrientes</h3>
+    <p class="text-center">Los macronutrientes, que incluyen hidratos de carbono, proteínas y grasas, proporcionan los componentes básicos que tu cuerpo necesita para funcionar eficientemente. Las calorías, por otro lado, representan la energía que obtienes de los alimentos que consumes y que es esencial para todo, desde el funcionamiento de tus órganos hasta la actividad física más intensa.</p>
+    <p class="text-center">Conocer con exactitud las calorías y los macronutrientes que tu cuerpo necesita para los objetivos que te plantees se debería considerar básico en la vida de cualquier persona. Al fin y al cabo, necesitamos alimentarnos (bien) para vivir, y esto lo haremos durante toda nuestra vida.</p>
+
+</div>
+
+<div class="container my-5">
+    <div class="row align-items-center mb-5 g-4">
+        <div class="col-lg-6">
+            <img src="{{ url_for('static', filename='styles/img/componentes_tmb.jpg') }}" class="img-fluid rounded img-round " alt="formula IMC">
+        </div>
+
+        <div class="col-lg-6">
+            <h3 class="titulo-verde mb-3">Fórmula de macronutrientes diarios</h3>
+            
+            <p>El cálculo adecuado de los macronutrientes depende de tu sexo (hombre o mujer), de tu peso corporal, de tu nivel de actividad física diaria y de tu objetivo individual respecto a la composición corporal. Ya sea que quieras aumentar la masa muscular, reducir la grasa corporal o mantener tu peso actual, el enfoque debe ser personalizado.</p>
+                
+            <p>En primer lugar, la calculadora determinará tu gasto energético diario a partir de los datos que introduzcas. Para hacerlo, sigue exactamente el mismo procedimiento que en la calculadora de gasto energético diario (GED)</p>
+
+            <p> En función del objetivo que elijas, establece un superávit o déficit predeterminado. En la sección de “objetivos” de los datos iniciales, puedes elegir que estos sean ligero, moderado, agresivo o muy agresivo. </p>
+            
+            <p>Si tu objetivo es ganar masa muscular, la calculadora establece por defecto los siguientes valores para tu ingesta calórica diaria:</p>
+                <ul>
+                    <li>Superávit ligero: +10% respecto a tu GED.</li>
+                    <li>Superávit moderado:+15% respecto a tu GED.</li>
+                    <li>Superávit agresivo:+20% respecto a tu GED.</li>
+                    <li>Superávit muy agresivo: +25% respecto a tu GED.</li>
+                </ul>
+
+            <p>Si tu objetivo es perder grasa corporal, la calculadora establece por defecto los siguientes valores para tu ingesta calórica diaria:</p>
+                <ul>
+                    <li>Déficit ligero: -10% respecto a tu GED.</li>
+                    <li>Déficit moderado:-20% respecto a tu GED.</li>
+                    <li>Déficit agresivo:-30% respecto a tu GED (no recomendable).</li>
+                    <li>Déficit muy agresivo: -40% respecto a tu GED (no recomendable).</li>
+                </ul>
+
+            <p>En caso de que tu objetivo sea mantenimiento, lo único que hay que hacer es ingerir las mismas calorías con la comida que las que gastas en tu día a día.</p>
+            <p>Una vez que sabemos cuántas calorías necesitas ingerir a través de la comida para conseguir tus objetivos, la calculadora se basa en el posicionamiento de referencia del Instituto de Medicina (IOM) junto al Colegio Americano de Medicina del Deporte (ACSM) para establecer las recomendaciones de macronutrientes:</p>
+                <ul>
+                    <li>🍗 Proteínas (4 kcal/g): 10 – 35% del total de calorías de tu ingesta calórica diaria.</li>
+                    <li>🍚 Hidratos de carbono (4 kcal/g): 45 – 65% del total de calorías de tu ingesta calórica diaria.</li>
+                    <li>🥑 Grasas (9 kcal/g): 20 – 35% del total de calorías de tu ingesta calórica diaria.</li>
+                </ul>
+        </div>
+    </div>
+
+    <div class="row align-items-center mb-5 g-4 flex-lg-row-reverse">
+        <div class="col-lg-6">
+            <img src="{{ url_for('static', filename='styles/img/componentes_tmb.jpg') }}" class="img-fluid rounded img-round " alt="formula IMC">
+        </div>
+        <div class="col-lg-6">
+            <p>Por ejemplo, si tu objetivo principal es perder grasa corporal, estableces un déficit calórico diario a través de la alimentación y de la actividad física diaria, incluyendo entrenamiento de fuerza, pero no ingieres una dieta un poco más alta en proteínas en comparación con lo habías hecho en superávit o mantenimiento, es bastante probable que tu masa muscular se vea más perjudicada de lo que deseas (al menos, durante las primeras 2 o 3 semanas)</p>
+        </div>
+
+        <div class="row align-items-center mb-5 g-4">
+        <div class="col-lg-6">
+            <img src="{{ url_for('static', filename='styles/img/componentes_tmb.jpg') }}" class="img-fluid rounded img-round " alt="formula IMC">
+        </div>
+        <div class="col-lg-6">
+            <p>Del mismo modo, si tienes por objetivo aumentar masa muscular y has establecido superávit calórico acorde a tus necesidades, pero no planteas una distribución de macronutrientes acertada (por ejemplo, más cantidad de grasas de la que verdaderamente sería necesaria), entonces, tu cambio de composición corporal tampoco será como habrías deseado </p>
+    </div>
+
+    <div class="row align-items-center mb-5 g-4">
+            <h3 class="titulo-verde mb-3">Resumen y conclusiones</h3>
+            
+            <p>En resumen, los macronutrientes y las calorías son elementos esenciales en nuestra salud, y siempre van a estar presentes en nuestras vidas, aunque no queramos. Podremos prestarles más o menos atención, pero siempre van a estar ahí, en cada comida que realicemos.</p>
+            
+            <p>Calorías y macronutrientes también son protagonistas en la búsqueda nuestros objetivos de rendimiento y composición corporal. Las calorías son las que marcan hacia dónde vamos, pero los macronutrientes son los que determinan cómo vamos y cómo llegamos.</p> 
+             <p> Ya sea que busques ganar músculo, perder grasa o mantener tu peso, la comprensión de cómo estos factores interactúan puede llevar tus resultados al siguiente nivel.</p>
+            <p>Pero recuerda también mantener la coherencia, la flexibilidad y la mente abierta mientras trabajas hacia una alimentación sostenible, nutrición óptima y un rendimiento máximo.</p>
+    </div>
+</div>
+
+
 {% endblock %}

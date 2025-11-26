@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block pagina %}
+Educacion
+{% endblock %}
+
+{% block titulo %}
+Macronutrientes
+{% endblock %}
+
+{% block menu %}
+
+<div class="container my-5 seccion-gris p-4 rounded">
+    <div class="row align-items-center g-4">
+
+        <div class="col-lg-6">
+            <img src="{{ url_for('static', filename='styles/img/macronutrientes.jpg') }}" 
+                 alt="Macronutrientes"
+                 class="img-fluid rounded shadow img-round">
+        </div>
+
+        <div class="col-lg-6">
+            <h2 class="titulo-verde mb-3">Guía sobre macronutrientes</h2>
+
+            <p>Los macronutrientes son los encargados de darte energía y mantener funciones esenciales del cuerpo. Conoce para qué sirve cada uno y en qué alimentos encontrarlos.</p>
+
+            <ul>
+                <li><strong>Proteínas:</strong> crecimiento, reparación y masa muscular.</li>
+                <li><strong>Carbohidratos:</strong> energía principal del cuerpo.</li>
+                <li><strong>Grasas saludables:</strong> hormonas, cerebro, energía.</li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

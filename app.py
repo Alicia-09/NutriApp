@@ -406,5 +406,21 @@ def calcular_macro():
                                     prote = (gramos_prote),
                                     grasas = (gramos_grasas)) 
 
+@app.route("/etiquetas")
+def etiquetas():
+    return render_template("etiquetas.html")
+
+@app.route("/mitos")
+def mitos():
+    return render_template("mitos.html")
+
+@app.route("/macronutrientes")
+def macronutrientes():
+    return render_template("macronutrientes.html")
+
+@app.route("/hidratacion")
+def hidratacion():
+    return render_template("hidratacion.html")
+
 if __name__ == "__main__":
     app.run(debug=True)

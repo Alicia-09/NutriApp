@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block pagina %}
+Educacion
+{% endblock %}
+
+{% block titulo %}
+Hidratacion 
+{% endblock %}
+
+{% block menu %}
+<div class="container my-5 p-4 rounded shadow-lg" style="background-color:#eefbf2;">
+    <div class="row flex-lg-row-reverse align-items-center g-4">
+
+        <div class="col-lg-6">
+            <img src="{{ url_for('static', filename='styles/img/hidratacion_fibra.jpg') }}" 
+                 alt="Hidratación y fibra"
+                 class="img-fluid rounded shadow img-round">
+        </div>
+
+        <div class="col-lg-6">
+            <h2 class="titulo-verde mb-3">Hidratación y fibra: pilares de una buena salud</h2>
+
+            <p>El agua y la fibra cumplen funciones esenciales para la digestión, energía, piel saludable y bienestar general. Aprende cuánta necesitas y cómo integrarlas a tu día.</p>
+
+            <ul>
+                <li>Mejora digestión y tránsito intestinal</li>
+                <li>Ayuda a absorber nutrientes correctamente</li>
+                <li>Evita desbalances metabólicos</li>
+                <li>Regula apetito y energía</li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

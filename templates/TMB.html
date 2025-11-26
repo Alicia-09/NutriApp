@@ -9,55 +9,68 @@ Calculadora de Tasa Metabolica Basal
 {% endblock %}
 
 {% block menu %}
+    <div class="padding-superior seccion-clara ">
+        <h1 class="text-center titulo-naranja">
+        Calculadora de indice de masa corporal (IMC)
+        </h1>
+    </div>
 
+<div class="container-fluid seccion-gris py-5">
+    <!-- descripcion calculadora -->
+    <p class="text-center p-4">
+        Con esta calculadora podrás calcular cuál es tu Tasa Metabólica Basal,
+         también conocido como gasto calórico en reposo.
+    </p>
 
-<div class="container my-5 justify-content-center seccion-gris">
-    <div class="col-lg-8 col-md-10">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
 
-        <h2 class="text-center titulo-naranja mb-3"></h2>
+                <div class="card shadow-lg rounded-4 border-0">
+                    <div class="card-body p-4 p-md-5">
+                        <div class=" mb-3 ">
 
-        <div class="card shadow-lg rounded-4 border-0">
-            <div class="card-body p-4 p-md-5">
-                <div class=" mb-3 ">
+                            <form method="POST" action="{{ url_for('calcular_tmb') }}">
 
-                    <form method="POST" action="{{ url_for('calcular_tmb') }}">
+                            <!-- sexo -->
+                                <div class="mb-3">
+                                    <label for="sexo" class="form-label titulo-verde">Sexo</label>
+                                    <select class="form-select" id="sexo" name="sexo">
+                                        <option selected>Seleccione su sexo</option>
+                                        <option value="hombre">Hombre</option>
+                                        <option value="mujer">Mujer</option>
+                                    </select>
+                                </div>
 
-                        <!-- sexo -->
-                        <div class="mb-3">
-                            <label for="sexo" class="form-label titulo-verde">Sexo</label>
-                            <select class="form-select" id="sexo" name="sexo">
-                                <option selected>Seleccione su sexo</option>
-                                <option value="hombre">Hombre</option>
-                                <option value="mujer">Mujer</option>
-                            </select>
-                        </div>
-
-                        <!-- peso -->
-                        <div class="mb-3">
-                            <label class="form-label titulo-verde">Peso (kg)</label>
-                            <input type="number" step="0.1" class="form-control" name="peso" id="peso"
+                            <!-- peso -->
+                                <div class="mb-3">
+                                    <label class="form-label titulo-verde">Peso (kg)</label>
+                                    <input type="number" step="0.1" class="form-control" name="peso" id="peso"
                                 placeholder="ejemplo 40">
-                        </div>
+                                </div>
 
-                        <!-- altura -->
-                        <div class="mb-3">
-                            <label class="form-label titulo-verde">Altura (cm)</label>
-                            <input type="number" step="0.1" class="form-control" name="altura" id="altura"
+                            <!-- altura -->
+                                <div class="mb-3">
+                                    <label class="form-label titulo-verde">Altura (cm)</label>
+                                    <input type="number" step="0.1" class="form-control" name="altura" id="altura"
                                 placeholder="ejemplo 160">
-                        </div>
+                                </div>
 
-                        <!-- edad -->
-                        <div class="mb-3">
-                            <label class="form-label titulo-verde">Edad (años)</label>
-                            <input type="number" class="form-control" name="edad" id="edad" placeholder="ejemplo 20">
-                        </div>
+                            <!-- edad -->
+                                <div class="mb-3">
+                                    <label class="form-label titulo-verde">Edad (años)</label>
+                                <input type="number" class="form-control" name="edad" id="edad" placeholder="ejemplo 20">
+                                </div>
 
-                        <!-- boton -->
-                        <div class="text-center">
-                            <button type="submit" class="btn boton-naranja">Calcular IMC</button>
-                        </div>
+                            <!-- boton -->
+                                <div class="text-center">
+                                    <button type="submit" class="btn boton-naranja">Calcular IMC</button>
+                                </div>
 
-                    </form>
+                            </form>
+
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -65,27 +78,102 @@ Calculadora de Tasa Metabolica Basal
 
         <!-- mensaje de resultado -->
         {% if resultado %}
-        <div class="alert alert-success text-center mt-4">
+        <div class="alert alert-success text-center mt-5">
             <h4 class="fw-bold">Tu tasa metabolica basal es: {{ resultado }} calorias/dia </h4>
         </div>
         {% endif %}
 
         <!-- mensaje de error -->
-        <div class="container mt-2">
+        <div class="container mt-5">
             {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
             {% for category, message in messages %}
             <div class="alert alert-{{ 'danger' if category == 'error' else 'success' }} alert-dismissible fade show"
                 role="alert">
                 {{ message }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             {% endfor %}
             {% endif %}
             {% endwith %}
         </div>
-
     </div>
 </div>
 
+<!-- sseparador de color -->
+<div class="p-4 seccion-clara">
+    <h3 class="text-center titulo-naranja mb-3">Información sobre la TMB</h3>
+    <p class="text-center">El Ritmo Metabólico Basal (RMB), también conocido como Tasa Metabólica Basal (TMB) o Metabolismo Basal, a secas, es un concepto fundamental en el campo de la nutrición y la salud. </p>
+    <p class="text-center">Comprender y calcular el Metabolismo Basal es esencial para determinar las necesidades energéticas de cada persona y proporcionar pautas adecuadas de alimentación y actividad física. </p>
+    <p class="text-center">A continuación, exploraremos en detalle qué es el Ritmo Metabólico Basal, cómo se calcula y qué factores influyen en el mismo, utilizando fórmulas científicas ampliamente aceptadas.</p>
+</div>
+
+<!-- seccion informacion -->
+<div class="container my-5">
+    <div class="row align-items-center mb-5 g-4">
+        <div class="col-lg-6">
+            <img src="{{ url_for('static', filename='styles/img/componentes_tmb.jpg') }}" class="img-fluid rounded img-round " alt="formula IMC">
+        </div>
+
+        <div class="col-lg-6">
+            <h3 class="titulo-verde mb-3">¿Qué es el metabolismo basal?</h3>
+            
+            <p>La tasa metabólica basal (TMB) es la cantidad mínima de calorías que tu cuerpo necesita para mantener sus funciones vitales en reposo, como respirar, circular la sangre y mantener la temperatura corporal.</p>
+                
+            <p>Es decir, es la energía que se consume para que el cuerpo funcione mientras está completamente quieto, incluso cuando duermes.</p>
+
+            <p> Esta cifra puede variar según la edad, el sexo, el peso, la altura y la composición corporal de la persona. </p>
+            
+        </div>
+    </div>
+
+    <div class="row align-items-center mb-5 g-4 flex-lg-row-reverse">
+        <div class="col-lg-6 ">
+            <img src="{{ url_for('static', filename='styles/img/grafica_tmb.jpg') }}"
+             class="img-fluid rounded img-round " 
+             alt="Hombre y mujer igual">
+        </div>
+
+        <div class="col-lg-6">
+            <h3 class="titulo-verde mb-3">Componentes que influyen en la TMB</h3>
+            
+             <ul>
+                <li>Peso corporal: Cuanto mayor sea el peso corporal, mayor será la cantidad de calorías requeridas para mantener las funciones vitales en reposo. </li>
+                <li>Masa corporal magra: La cantidad de tejido magro, como músculos y órganos, influye en gran medida en la Tasa Metabólica Basal. Tanto es así, que puede llegar a representar el 40% del gasto total del metabolismo basal . </li>
+                <li>Estatura: En general, a mayor estatura, mayor superficie corporal y volumen, lo que resulta en un Metabolismo Basal más alto.</li>
+                <li> Sexo: Por lo general, los hombres suelen tener un Ritmo Metabólico Basal más alto que las mujeres, ya que es común que ellos tengan más masa muscular, menos grasa corporal y más superficie corporal que las mujeres.</li>
+                <li>Genética:Algunas personas pueden tener una tasa metabólica basal naturalmente más alta o más baja debido a factores hereditarios.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row align-items-center mb-5 g-4">
+            <h3 class="titulo-verde mb-3">Fórmula para calcular el metabolismo basal (utilizada en esta calculadora)</h3>
+        
+            <p>Existen varias fórmulas utilizadas para calcular el Ritmo Metabólico Basal, pero las más aceptadas y utilizadas son las fórmulas de Harris – Benedict, desarrollada a principios del siglo XX y revisadas posteriormente por Mifflin y St. Jeor en 1990, y la fórmula de Katch – McArdle, desarrollada en 1975 y revisada por Cunningham et al., en 1991:</p>
+           
+            <ul>
+                <li>Ritmo Metabólico Basal en hombres = (10 x peso en kg) + (6.25 x altura en cm) – (5 x edad en años) + 5</li>
+                <li>Ritmo Metabólico Basal en mujeres = (10 x peso en kg) + (6.25 x altura en cm) – (5 x edad en años) – 161</li>
+            </ul>
+    </div>
+
+    <div class="row align-items-center mb-5 g-4">
+        <div class="col-lg-6 ">
+            <img src="{{ url_for('static', filename='styles/img/funciones_tmb.jpg') }}" 
+            class="img-fluid rounded img-round shadow" 
+            alt="Limitaciones imc">
+        </div>
+        
+        <div class="col-lg-6">
+                <h3 class="titulo-verde mb-3">¿Para qué sirve conocer tu metabolismo basal?</h3>
+
+                <p>Determinar necesidades calóricas: El RMB es la cantidad mínima de calorías que el cuerpo necesita para mantener funciones vitales en reposo. Conociendo esta cifra, se puede calcular de manera más precisa el número total de calorías necesarias para cada persona, a través del Gasto Energético Diario.</p>
+                <p>Calcularlo con precisión en esta calculadora nos ayudará para nuestros objetivos de mantener el peso actual, perder grasa o ganar masa muscular, según lo que queramos o necesitemos.</p>
+                <p>Optimización del rendimiento: Para deportistas y personas activas, entender el Ritmo Metabólico Basal es fundamental para ajustar las necesidades energéticas según el nivel de actividad física. Esto asegura un suministro adecuado de energía para el rendimiento y la recuperación.</p>
+                <p>Evaluación del estado metabólico: Calcular el RMB puede utilizarse en la evaluación del estado metabólico de una persona. Es un objetivo menos conocido por la población general, donde el posterior cálculo del Gasto Energético Diario suele ser la razón principal para conocerlo, pero en situaciones clínicas, es otra razón importante por la que puede interesar calcularlo.</p>
+                <p>Controlar el peso: Al conocer tu TMB, puedes diseñar un plan de alimentación y ejercicio más efectivo. Una TMB más alta significa que tu cuerpo quema más calorías en reposo, mientras que una TMB baja puede indicar la necesidad de aumentar la masa muscular para elevarla. </p>
+                <p>Entender la eficiencia metabólica: Te permite comprender la eficiencia con la que tu cuerpo utiliza la energía y a ajustar tus hábitos de vida para mejorar tu salud general. </p>
+        </div>
+    </div>
+</div>
 {% endblock %}

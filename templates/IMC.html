@@ -10,50 +10,51 @@ Calculadoras
 
 {% block menu %}
 
-<div class="container my-5">
-    <!-- encabezado-->
-    <h1 class="text-center titulo-naranja mb-3">
+    <div class="padding-superior seccion-clara ">
+        <h1 class="text-center titulo-naranja">
         Calculadora de indice de masa corporal (IMC)
-    </h1>
+        </h1>
+    </div>
 
-    <p class="text-center">
+<div class="container-fluid seccion-gris py-5">
+    <!-- descripcion calculadora -->
+    <p class="text-center p-4">
         Con esta calculadora podrás saber cuál es tu Índice de Masa Corporal (IMC), un sistema de medición que
         asocia el peso y la altura de una persona con el objetivo de determinar si se encuentra en su peso
         saludable.
     </p>
-</div>
-
 
 <!-- calculadora -->
-<div class="container my-5 justify-content-center seccion-gris">
-    <div class="col-lg-8 col-md-10">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-10">
 
-        <h2 class="text-center titulo-naranja mb-3"></h2>
+                    <div class="card shadow-lg rounded-4 border-0">
+                        <div class="card-body p-4 p-md-5">
 
-        <div class="card shadow-lg rounded-4 border-0">
-            <div class="card-body p-4 p-md-5">
-                <div class="mb-3 ">
+                            <form method="POST" action="{{ url_for('calcular_imc') }}">
 
-                    <form method="POST" action="{{ url_for('calcular_imc') }}">
-
-                        <div class="mb-3">
-                            <label class="form-label titulo-verde">Peso (kg)</label>
-                            <input type="number" step="0.1" class="form-control" name="peso" id="peso"
-                                placeholder="Peso actual en kg">
-                        </div>
+                                <div class="mb-3">
+                                    <label class="form-label titulo-verde">Peso (kg)</label>
+                                    <input type="number" step="0.1" class="form-control" name="peso" id="peso"
+                                    placeholder="Peso actual en kg">
+                                </div>
 
 
-                        <div class="mb-3">
-                            <label class="form-label titulo-verde">Altura (m)</label>
-                            <input type="number" step="0.1" class="form-control" name="altura" id="altura"
-                                placeholder="Altura actual en metros ej. 1.60" required>
-                        </div>
+                                <div class="mb-3">
+                                    <label class="form-label titulo-verde">Altura (m)</label>
+                                    <input type="number" step="0.1" class="form-control" name="altura" id="altura"
+                                    placeholder="Altura actual en metros ej. 1.60" required>
+                                </div>
 
-                        <div class="text-center">
-                            <button type="submit" class="btn  boton-naranja">Calcular IMC</button>
-                        </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn  boton-naranja">Calcular IMC</button>
+                                </div>
 
-                    </form>
+                            </form>
+
+                        </div> 
+                    </div>
 
                 </div>
             </div>
@@ -61,59 +62,63 @@ Calculadoras
 
         <!-- mensaje de respuesta -->
         {% if resultado %}
-        <div class="alert alert-success text-center mt-4">
+        <div class="alert alert-success text-center mt-5">
             <h4 class="fw-bold">Tu IMC es: {{ resultado }}</h4>
         </div>
         {% endif %}
 
-        <div class="container mt-2">
+        <div class="container mt-5">
             {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
             {% for category, message in messages %}
             <div class="alert alert-{{ 'danger' if category == 'error' else 'success' }} alert-dismissible fade show"
                 role="alert">
                 {{ message }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             {% endfor %}
             {% endif %}
             {% endwith %}
         </div>
-    </div>
-</div>
+
+
 
 <!-- tabla de imc-->
-<div class="container my-5">
-    <h3 class="titulo-naranja fw-bold">Clasificación del IMC</h3>
-    <div class="table-responsive mt-3">
-        <table class="table table-bordered text-center align-middle shadow-sm">
-            <thead class="seccion-clara">
-                <tr>
-                    <th class="titulo-naranja">IMC</th>
-                    <th class="titulo-naranja">Composición corporal</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Por debajo de 18.5</td>
-                    <td>Inferior a lo normal</td>
-                </tr>
-                <tr>
-                    <td>Entre 18.5 y 24.9</td>
-                    <td>Normal</td>
-                </tr>
-                <tr>
-                    <td>Entre 25.0 y 29.9</td>
-                    <td>Superior a lo normal</td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="container mt-5">
+        <h3 class="titulo-naranja fw-bold">Clasificación del IMC</h3>
+        <div class="table-responsive mt-3">
+            <table class="table table-bordered text-center align-middle shadow-sm">
+                <thead class="seccion-clara">
+                    <tr>
+                        <th class="titulo-naranja">IMC</th>
+                        <th class="titulo-naranja">Composición corporal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Por debajo de 18.5</td>
+                        <td>Inferior a lo normal</td>
+                    </tr>
+                    <tr>
+                        <td>Entre 18.5 y 24.9</td>
+                        <td>Normal</td>
+                    </tr>
+                    <tr>
+                        <td>Entre 25.0 y 29.9</td>
+                        <td>Superior a lo normal</td>
+                    </tr>
+                    <tr>
+                        <td>30.0 en adelante</td>
+                        <td>Obesidad</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
 
 <!-- sseparador de color -->
-<div class="p-4 mt-5 seccion-clara">
+<div class="p-4 seccion-clara">
     <h3 class="text-center titulo-naranja mb-3">Información sobre el IMC</h3>
     <p class="text-center">
        El Índice de Masa Corporal (IMC) es una medida utilizada mundialmente para evaluar el estado nutricional y el riesgo de enfermedades relacionadas con el peso en la población general. Se calcula a partir de la relación entre el peso y la estatura de una persona.
@@ -131,56 +136,60 @@ A continuación, exploraremos en detalle la fórmula del IMC, su utilidad, sus l
 
         <div class="col-lg-6">
             <h3 class="titulo-verde mb-3">¿Cuál es la fórmula de IMC oficial?</h3>
-            <p>
-                El Índice de Masa Corporal (IMC), o índice de Quetelet, se utiliza para evaluar el peso en relación con la estatura y se calcula dividiendo el peso corporal en kilogramos por la estatura en metros al cuadrado (kg/m2).
-                Se considera que el IMC proporciona una estimación general del estado nutricional y la composición corporal de una persona, aunque no tiene en cuenta la distribución de la grasa corporal ni otros factores individuales.
-            </p>
+            
+            <p>El Índice de Masa Corporal (IMC), o índice de Quetelet, se utiliza para evaluar el peso en relación con la estatura y se calcula dividiendo el peso corporal en kilogramos por la estatura en metros al cuadrado (kg/m2).</p>
+                
+            <p>Se considera que el IMC proporciona una estimación general del estado nutricional y la composición corporal de una persona, aunque no tiene en cuenta la distribución de la grasa corporal ni otros factores individuales.</p>
             
         </div>
     </div>
 
 
     <div class="row align-items-center mb-5 g-4 flex-lg-row-reverse">
-        <div class="col-lg-6">
-            <img src="{{ url_for('static', filename='styles/img/genero_imc.png') }}" class="img-fluid rounded img-round " alt="Hombrew y mujer igual">
+        <div class="col-lg-6 ">
+            <img src="{{ url_for('static', filename='styles/img/genero_imc.png') }}"
+             class="img-fluid rounded img-round " 
+             alt="Hombrew y mujer igual">
         </div>
 
         <div class="col-lg-6">
             <h3 class="titulo-verde mb-3">¿Por qué la fórmula del IMC es igual para hombres y mujeres?</h3>
-            <p>
-                La fórmula del IMC es igual para hombres y mujeres porque se basa en una relación estándar entre el peso y la estatura, independientemente del sexo.
+            
+            <p>La fórmula del IMC es igual para hombres y mujeres porque se basa en una relación estándar entre el peso y la estatura, independientemente del sexo.</p>
 
-                Sin embargo, es importante tener en cuenta que hombres y mujeres pueden tener diferentes composiciones corporales y distribución de grasa. Por lo tanto, el IMC puede no ser el indicador más preciso para evaluar el estado nutricional en todos los casos.
-            </p>
+            <p>Sin embargo, es importante tener en cuenta que hombres y mujeres pueden tener diferentes composiciones corporales y distribución de grasa. Por lo tanto, el IMC puede no ser el indicador más preciso para evaluar el estado nutricional en todos los casos.</p>
             
         </div>
     </div>
    
      <div class="row align-items-center mb-5 g-4">
         <div class="col-lg-6">
-            <img src="{{ url_for('static', filename='styles/img/grafica_imc.jpg') }}" class="img-fluid rounded img-round" alt="Actividad física">
+            <img src="{{ url_for('static', filename='styles/img/grafica_imc.jpg') }}" 
+            class="img-fluid rounded img-round" 
+            alt="Clasificacion imc">
         </div>
 
         <div class="col-lg-6">
             <h3 class="titulo-verde mb-3">¿Para qué se usa el Índice de Masa Corporal?</h3>
-            <p>
-                El Índice de Masa Corporal (IMC) se utiliza para clasificar a las personas en diferentes categorías de peso, como bajo peso, peso normal, sobrepeso y obesidad 
-
-                Estas categorías se basan en rangos establecidos por organizaciones de salud, como la Organización Mundial de la Salud (OMS) y los Centros para el Control y la Prevención de Enfermedades (CDC).
-
-                La práctica común es definir un IMC menor de 18.5 kg/ m2 como bajo peso, de 18.5 a 24.9 kg/ m2 como peso normal, de 25.0 a 29.9 kg/ m2 como sobrepeso y mayor o igual a 30.0 kg/m2 como obesidad, pero hay muchas connotaciones a estos rangos.
             
-                El IMC se utiliza ampliamente como una herramienta de detección para identificar posibles problemas de peso y riesgos asociados. Por ejemplo, se ha encontrado que un IMC elevado está relacionado con un mayor riesgo de enfermedades crónicas, como enfermedades cardiovasculares, diabetes tipo 2, hipertensión y ciertos tipos de cáncer, así como riesgo de muerte por todas las causas (metanálisis).
+            <p>El Índice de Masa Corporal (IMC) se utiliza para clasificar a las personas en diferentes categorías de peso, como bajo peso, peso normal, sobrepeso y obesidad  </p>
+
+            <p>Estas categorías se basan en rangos establecidos por organizaciones de salud, como la Organización Mundial de la Salud (OMS) y los Centros para el Control y la Prevención de Enfermedades (CDC).</p> 
+
+            <p>La práctica común es definir un IMC menor de 18.5 kg/ m2 como bajo peso, de 18.5 a 24.9 kg/ m2 como peso normal, de 25.0 a 29.9 kg/ m2 como sobrepeso y mayor o igual a 30.0 kg/m2 como obesidad, pero hay muchas connotaciones a estos rangos.</p> 
             
-                Sin embargo, es importante tener en cuenta que el Índice de Masa Corporal (IMC) es una medida general y no tiene en cuenta otros factores importantes, como la composición corporal, la distribución de grasa, la masa muscular y la salud metabólica individual.
-            </p>
+            <p>El IMC se utiliza ampliamente como una herramienta de detección para identificar posibles problemas de peso y riesgos asociados. Por ejemplo, se ha encontrado que un IMC elevado está relacionado con un mayor riesgo de enfermedades crónicas, como enfermedades cardiovasculares, diabetes tipo 2, hipertensión y ciertos tipos de cáncer, así como riesgo de muerte por todas las causas (metanálisis).</p> 
+            
+            <p>Sin embargo, es importante tener en cuenta que el Índice de Masa Corporal (IMC) es una medida general y no tiene en cuenta otros factores importantes, como la composición corporal, la distribución de grasa, la masa muscular y la salud metabólica individual.</p> 
            
         </div>
     </div>
 
     <div class="row align-items-center mb-5 g-4 flex-lg-row-reverse">
-        <div class="col-lg-6">
-            <img src="https://via.placeholder.com/600x350" class="img-fluid rounded img-round shadow" alt="Salud y peso">
+        <div class="col-lg-6 ">
+            <img src="{{ url_for('static', filename='styles/img/limitaciones_imc.png') }}" 
+            class="img-fluid rounded img-round " 
+            alt="Limitaciones imc">
         </div>
 
         <div class="col-lg-6">
@@ -190,13 +199,20 @@ A continuación, exploraremos en detalle la fórmula del IMC, su utilidad, sus l
             </p>
             <ul>
                 <li>No distingue entre la masa grasa y la masa muscular. El Índice de Masa Corporal (IMC) no tiene en cuenta la composición corporal y no diferencia entre la grasa corporal y la masa muscular. </li>
-                <li> No considera la distribución de grasa corporal.El IMC no proporciona información sobre la distribución de grasa, que puede ser relevante para el riesgo de enfermedades metabólicas y cardiovasculares.</li>
+                <li> No considera la distribución de grasa corporal. El IMC no proporciona información sobre la distribución de grasa, que puede ser relevante para el riesgo de enfermedades metabólicas y cardiovasculares.</li>
                 <li> No evalúa la salud metabólica. El IMC no proporciona información sobre la salud metabólica, como los niveles de glucosa en sangre, los lípidos séricos y otros marcadores importantes de riesgo metabólico</li>
             </ul>
         </div>
     </div>
 
-
+    <div class="row align-items-center mb-5 g-4">
+            <h3 class="titulo-verde mb-3">Resumen y conclusiones</h3>
+            
+            <p>En resumen, el Índice de Masa Corporal (IMC) es una medida ampliamente utilizada para evaluar el estado nutricional y el riesgo de enfermedades relacionadas con el peso en la población general. Sin embargo,
+               tiene limitaciones significativas y puede no ser adecuado para todos los individuos, especialmente para deportistas y personas físicamente activas.</p>
+            
+            <p>Es importante considerar otros factores, como la composición corporal, la distribución de grasa y la salud metabólica, para obtener una evaluación más precisa del estado nutricional y el riesgo de enfermedades.</p> 
+    </div>
 </div>
 
 

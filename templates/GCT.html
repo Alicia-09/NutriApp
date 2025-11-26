@@ -5,77 +5,91 @@ Calculadoras
 {% endblock %}
 
 {% block titulo %}
-Calculadora de Gasto Calorico Total
+Calculadoras
 {% endblock %}
 
 {% block menu %}
 
+<div class="padding-superior seccion-clara ">
+        <h1 class="text-center titulo-naranja">
+        Calculadora de Gasto Energetico Total (GCT)
+        </h1>
+</div>
+<div class="container-fluid seccion-gris py-5">
 
-<div class="container my-5 justify-content-center seccion-gris">
-    <div class="col-lg-8 col-md-10">
+     <p class="text-center p-4">
+        Esta calculadora te indica la cantidad aproximada de kcals que quema tu cuerpo en un día, también conocido como Gasto Energético Diario o GET.
+    </p>
 
-        <h2 class="text-center titulo-naranja mb-3"></h2>
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
 
-        <div class="card shadow-lg rounded-4 border-0">
-            <div class="card-body p-4 p-md-5">
-                <div class=" mb-3 ">
+                <div class="card shadow-lg rounded-4 border-0">
+                    <div class="card-body p-4 p-md-5">
+                        <div class=" mb-3 ">
 
-                    <form method="POST" action="{{ url_for('calcular_gct') }}">
+                            <form method="POST" action="{{ url_for('calcular_gct') }}">
 
-                        <!-- sexo -->
-                        <div class="mb-3">
-                            <label for="sexo" class="form-label titulo-verde">Sexo</label>
-                            <select class="form-select" id="sexo" name="sexo">
-                                <option selected>Seleccione su sexo</option>
-                                <option value="hombre">Hombre</option>
-                                <option value="mujer">Mujer</option>
-                            </select>
+                                <!-- sexo -->
+                                <div class="mb-3">
+                                    <label for="sexo" class="form-label titulo-verde">Sexo</label>
+                                    <select class="form-select" id="sexo" name="sexo">
+                                        <option selected>Seleccione su sexo</option>
+                                        <option value="hombre">Hombre</option>
+                                        <option value="mujer">Mujer</option>
+                                    </select>
+                                </div>
+
+
+                                <!-- peso-->
+                                <div class="mb-3">
+                                    <label class="form-label titulo-verde">Peso (kg)</label>
+                                    <input type="number" step="0.1" class="form-control" name="peso" id="peso"
+                                        placeholder="ejemplo 40">
+                                </div>
+
+                                <!-- altura -->
+                                <div class="mb-3">
+                                    <label class="form-label titulo-verde">Altura (cm)</label>
+                                    <input type="number" step="0.1" class="form-control" name="altura" id="altura"
+                                        placeholder="ejemplo 160">
+                                </div>
+
+                                <!-- edad -->
+                                <div class="mb-3">
+                                    <label class="form-label titulo-verde">Edad (años)</label>
+                                    <input type="number" class="form-control" name="edad" id="edad" placeholder="ejemplo 20">
+                                </div>
+
+                                <!-- nivel de actividad-->
+                                <div class="mb-3">
+                                 <label for="actividad" class="form-label titulo-verde">Nivel de actividad</label>
+                                    <select class="form-select" id="actividad" name="actividad">
+                                        <option selected>Seleccione su nivel</option>
+                                        <option value="sedentario">Sedentario (Poco o nada de ejercicio)</option>
+                                        <option value="ligera">Actividad ligera (Ejercicio 1-3 dias/semana)</option>
+                                        <option value="moderada">Actividad Moderada (Ejercicio 3-5 dias/semana)</option>
+                                        <option value="alta">Actividad Alta (Ejercicio 6-7 dias/semana)</option>
+                                        <option value="intensa">Actividad Intensa (ejercicio muy intenso diario)</option>
+                                    </select>
+                                </div>
+
+                                <!-- boton -->
+                                <div class="text-center">
+                                    <button type="submit" class="btn boton-naranja">Calcular IMC</button>
+                                </div>
+
+                            </form>
+
                         </div>
-
-
-                        <!-- peso-->
-                        <div class="mb-3">
-                            <label class="form-label titulo-verde">Peso (kg)</label>
-                            <input type="number" step="0.1" class="form-control" name="peso" id="peso"
-                                placeholder="ejemplo 40">
-                        </div>
-
-                        <!-- altura -->
-                        <div class="mb-3">
-                            <label class="form-label titulo-verde">Altura (cm)</label>
-                            <input type="number" step="0.1" class="form-control" name="altura" id="altura"
-                                placeholder="ejemplo 160">
-                        </div>
-
-                        <!-- edad -->
-                        <div class="mb-3">
-                            <label class="form-label titulo-verde">Edad (años)</label>
-                            <input type="number" class="form-control" name="edad" id="edad" placeholder="ejemplo 20">
-                        </div>
-
-                        <!-- nivel de actividad-->
-                        <div class="mb-3">
-                            <label for="actividad" class="form-label titulo-verde">Nivel de actividad</label>
-                            <select class="form-select" id="actividad" name="actividad">
-                                <option selected>Seleccione su nivel</option>
-                                <option value="sedentario">Sedentario (Poco o nada de ejercicio)</option>
-                                <option value="ligera">Actividad ligera (Ejercicio 1-3 dias/semana)</option>
-                                <option value="moderada">Actividad Moderada (Ejercicio 3-5 dias/semana)</option>
-                                <option value="alta">Actividad Alta (Ejercicio 6-7 dias/semana)</option>
-                                <option value="intensa">Actividad Intensa (ejercicio muy intenso diario)</option>
-                            </select>
-                        </div>
-
-                        <!-- boton -->
-                        <div class="text-center">
-                            <button type="submit" class="btn boton-naranja">Calcular IMC</button>
-                        </div>
-
-                    </form>
-
+                    </div>
                 </div>
+                
             </div>
         </div>
+
 
         <!-- mensaje de resultado -->
         {% if resultado %}
@@ -98,8 +112,97 @@ Calculadora de Gasto Calorico Total
             {% endif %}
             {% endwith %}
         </div>
-
     </div>
 </div>
 
+<div class="p-4 seccion-clara">
+    <h3 class="text-center titulo-naranja mb-3">Información sobre el GET</h3>
+    <p class="text-center">El Gasto Energético Diario (GET) es un concepto fundamental en el campo de la nutrición y la salud.
+Comprender y calcular el Gasto Energético Diario es esencial para determinar las necesidades energéticas de cada persona y proporcionar pautas adecuadas de alimentación y actividad física.
+A continuación, exploraremos en detalle qué es el Gasto Energético Diario, cómo se calcula y qué factores influyen en el mismo, utilizando fórmulas científicas ampliamente aceptadas. </p>
+</div>
+
+<div class="container my-5">
+    <div class="row align-items-center mb-5 g-4">
+        <div class="col-lg-6">
+            <img src="{{ url_for('static', filename='styles/img/grafica_gct.webp') }}" class="img-fluid rounded img-round " alt="formula IMC">
+        </div>
+
+        <div class="col-lg-6">
+            <h3 class="titulo-verde mb-3">¿Qué es el Gasto Energético Diario?</h3>
+            
+            <p>El Gasto Energético Diario se refiere a la cantidad total de energía que una persona necesita para llevar a cabo todas las actividades diarias, incluyendo el metabolismo basal, la termogénesis inducida por la dieta y la energía utilizada durante la actividad física.</p>
+                
+            <p>Concretamente, el Gasto Energético Diario se compone de cuatro componentes.</p>
+
+            <ul>
+                <li>Ritmo metabólico basa: Esto describe la energía requerida para simplemente mantener nuestro cuerpo "encendido", en reposo, asumiendo que nos quedamos en la cama todo el día sin movernos ni comer.</li>
+                <li>Efecto térmico de los alimentos: Se refiere a la energía utilizada en el proceso de comer, digerir, metabolizar y almacenar alimentos. Dietas con mayor contenido de proteínas y fibra tendrán un efecto térmico algo superior que dietas con poco contenido en estas.</li>
+                <li>Gasto energético procedente del ejercicio: Es la energía utilizada durante el ejercicio estructurado e intencional; es decir, durante las sesiones de gimnasio y/o los entrenamientos del deporte que practiquemos.</li>
+                <li>Gasto energético de las actividades que no se consideran ejercicio: Describe la energía utilizada para cualquier movimiento que no sea un ejercicio intencionado. Esto incluiría los paseos diarios, caminar por la escuela u oficina, trabajar en el jardín, sacar la basura e incluso moverse inquieto en la silla.</li>
+            </ul>
+
+            <p>Sabiendo lo que ingerimos y lo que gastamos podremos estructurar, anticipar y entender nuestros cambios de peso y composición corporal (más o menos masa muscular, más o menos grasa corporal).</p>
+            
+        </div>
+    </div>
+
+    <div class="row align-items-center mb-5 g-4 flex-lg-row-reverse">
+        <div class="col-lg-6 ">
+            <img src="{{ url_for('static', filename='styles/img/grafica_tmb.jpg') }}"
+             class="img-fluid rounded img-round " 
+             alt="Hombrew y mujer igual">
+        </div>
+
+        <div class="col-lg-6">
+            <h3 class="titulo-verde mb-3">Fórmula para calcular el gasto energético diario</h3>
+
+            <p>Existen varias fórmulas utilizadas para calcular el Gasto Energético Diario, pero unas de las más ampliamente aceptadas son las fórmulas de Harris – Benedict, desarrollada a principios del siglo XX y revisadas posteriormente por Mifflin y St. Jeor en 1990, y la fórmula de Katch – McArdle, desarrollada en 1975 y revisada por Cunningham et al., en 1991:</p>
+            <p>Ecuaciones de Harris – Benedict revisadas por Mifllin y St. Jeor:</p>
+            
+             <ul>
+              <li>Ritmo Metabólico Basal en hombres = (10 x peso en kg) + (6.25 x altura en cm) – (5 x edad en años) + 5</li>
+              <li>Ritmo Metabólico Basal en mujeres = (10 x peso en kg) + (6.25 x altura en cm) – (5 x edad en años) – 161</li>
+            </ul>
+
+            <p>A partir de ahí, dependiendo del nivel de actividad de cada persona (dato que también debemos aportar), se multiplica el resultado de RMB por un Factor de Actividad (FA) para obtener el gasto energético diario aproximado:</p>
+            <ul>
+                <li>Sedentario (poco o ningún ejercicio): FA = 1.2</li>
+                <li>Actividad ligera (ejercicio ligero o deporte 1-3 días a la semana): FA = 1.375</li>
+                <li>Actividad moderada (ejercicio moderado o deporte 3-5 días a la semana): FA = 1.55</li>
+                <li>Actividad intensa (ejercicio intenso o deporte 6-7 días a la semana): FA = 1.725</li>
+                <li>Actividad muy intensa (ejercicio muy intenso o trabajo físico y ejercicio diario): FA = 1.9</li>
+            </ul>
+        
+            <p>Es importante tener en cuenta que estas fórmulas proporcionan una estimación general del Gasto Energético Diario y pueden no ser del todo precisas, como pasa con cualquier sistema indirecto de cálculo.</p>
+        </div>
+    </div>
+
+    <div class="row align-items-center mb-5 g-4">
+        <div class="col-lg-6 ">
+            <img src="{{ url_for('static', filename='styles/img/funciones_tmb.jpg') }}" 
+            class="img-fluid rounded img-round shadow" 
+            alt="Limitaciones imc">
+        </div>
+        
+        <div class="col-lg-6">
+                <h3 class="titulo-verde mb-3">¿De qué factores depende el gasto energético diario?</h3>
+                 
+                <p>El Gasto Energético Diario depende de una serie de factores que influyen en la cantidad de energía que el cuerpo necesita para funcionar adecuadamente. Algunos son:</p>
+                <ul>
+                    <li>Metabolismo basal: El metabolismo basal, que representa la mayor parte del Gasto Energético Diario en la mayoría de las personas, está influenciado por la masa muscular, la composición corporal, la edad y el sexo.</li>
+                    <li>Nivel de actividad física:Las personas que llevan un estilo de vida sedentario tendrán un gasto energético más bajo en comparación con aquellas que realizan ejercicio regularmente o tienen trabajos físicamente demandantes.</li>
+                    <li>Tamaño y composición corporal: Las personas con mayor peso y altura generalmente tienen un Gasto Energético Diario más alto debido a que su cuerpo requiere más energía para mantener sus funciones vitales.</li>
+                    <li>Edad:El Gasto Energético Diario tiende a disminuir con la edad debido a la pérdida de masa muscular natural y cambios en el metabolismo. </li>
+                    <li>Condiciones fisiológicas y patológicas:Algunas condiciones fisiológicas, como el embarazo o la lactancia, y ciertas enfermedades, como el hipertiroidismo o la fiebre, pueden aumentar el Gasto Energético Diario debido a la demanda adicional de energía del cuerpo.</li>
+                </ul>
+          </div>
+    </div>
+      
+    <div class="row align-items-center mb-5 g-4">
+            <h3 class="titulo-verde mb-3">Resumen y conclusiones</h3>
+             <p>En resumen, el Gasto Energético Diario es una medida importante para determinar las necesidades energéticas de cada persona. Comprender y calcular el Gasto Energético Diario de manera precisa nos permite establecer pautas nutricionales adecuadas y encontrar un estilo de vida saludable que concuerde con nuestros objetivos.</p>
+
+    </div>
+</div>
 {% endblock %}

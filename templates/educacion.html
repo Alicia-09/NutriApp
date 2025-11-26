@@ -9,7 +9,7 @@ Módulo de Educación e Información
 {% endblock %}
 
 {% block menu %}
-<section class="py-5" seccion-gris">
+<section class="py-5 seccion-gris">
     <div class="container">
 
         <h2 class="fw-bold text-center mb-5 titulo-naranja">
@@ -21,9 +21,9 @@ Módulo de Educación e Información
             <div class="col-md-6">
                 <div class="card card-custom shadow-sm">
                     <div class="row g-0">
-                        <div class="col-auto">
+                        <div class="col-4">
                             <img src="{{ url_for('static', filename='styles/img/etiquetas.jpg') }}"
-                                 class="img-300 img-round"
+                                 class="img-fluid img-round"
                                  alt="Imagen">
 
                         </div>
@@ -33,9 +33,9 @@ Módulo de Educación e Información
                                     ¿Cómo leer las etiquetas nutricionales?
                                 </h5>
                                 <p class="text-muted small">
-                                    Aprende a identificar nutrientes estás consumiendo.
+                                    Aprende a identificar que nutrientes estás consumiendo.
                                 </p>
-                                 <a class="btn boton-verde">Leer mas</a>
+                                 <a href="http://127.0.0.1:5000/etiquetas" class="btn boton-verde">Leer mas</a>
                             </div>
                         </div>
                     </div>
@@ -58,7 +58,7 @@ Módulo de Educación e Información
                                 <p class="text-muted small">
                                     Descubre qué funciona realmente y qué es solo tendencia.
                                 </p>
-                                 <a class="btn boton-verde">Leer mas</a>
+                                 <a href="http://127.0.0.1:5000/mitos"class="btn boton-verde">Leer mas</a>
                                 
                             </div>
                         </div>
@@ -83,7 +83,7 @@ Módulo de Educación e Información
                                 <p class="text-muted small">
                                     Aprende para qué sirven las proteínas, grasas y carbohidratos.
                                 </p>
-                                 <a class="btn boton-verde">Leer mas</a>
+                                 <a href="http://127.0.0.1:5000/macronutrientes" class="btn boton-verde">Leer mas</a>
                                 
                             </div>
                         </div>
@@ -108,7 +108,7 @@ Módulo de Educación e Información
                                 <p class="text-muted small">
                                     Conoce cómo influye el agua en el rendimiento y la salud.
                                 </p>
-                                <a class="btn boton-verde">Leer mas</a>
+                                <a href="http://127.0.0.1:5000/hidratacion" class="btn boton-verde">Leer mas</a>
                             </div>
                         </div>
                     </div>
@@ -141,8 +141,20 @@ Módulo de Educación e Información
                             <p class="text-muted mb-3">
                                 Rutinas simples para comenzar a complementar tu alimentación.
                             </p>
-                            <a class="btn boton-naranja px-4">
+                             <a href="{{ url_for('static', filename='styles/pdfs/ejercicios_basicos.pdf') }}" 
+                                class="btn boton-naranja px-4" download>
                                 Descargar PDF
+                            </a>
+                        </div>
+
+                        <div>
+                            <h4 class="fw-bold titulo-naranja">Planillas de actividad fisica</h4>
+                            <p class="text-muted mb-3">
+                                Recomendaciones de actividad física de la OMS
+                            </p>
+                            <a href="{{ url_for('static', filename='styles/pdfs/actividad_fisica.pdf') }}" 
+                                class="btn boton-naranja px-4"download>
+                               Descargar PDF
                             </a>
                         </div>
                     </div>

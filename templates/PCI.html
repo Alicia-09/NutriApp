@@ -5,40 +5,52 @@ Calculadoras
 {% endblock %}
 
 {% block titulo %}
-Calculadora de Peso Corporal Ideal
+Calculadoras
 {% endblock %}
 
 {% block menu %}
+<div class="padding-superior seccion-clara ">
+        <h1 class="text-center titulo-naranja">
+        Calculadora de Peso Corporal Ideal (PCI)
+        </h1>
+</div>
+
+<div class="container-fluid seccion-gris py-5">
+    <!-- descripcion calculadora -->
+    <p class="text-center p-4">
+       Conoce si estás en un peso saludable o cuánto te falta para alcanzarlo.
+       Después lee el artículo para ver en qué nos basamos y cómo puedes mejorarlo.
+    </p>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+
+                <div class="card shadow-lg rounded-4 border-0">
+                    <div class="card-body p-4 p-md-5">
+                        <div class=" mb-3 ">
+
+                            <form method="POST" action="{{ url_for('calcular_pci') }}">
+
+                                <div class="mb-3">
+                                    <label class="form-label titulo-verde">Peso (kg)</label>
+                                    <input type="number" step="0.1" class="form-control" name="peso" id="peso"
+                                        placeholder="ejemplo 40">
+                                </div>
 
 
-<div class="container my-5 justify-content-center seccion-gris">
-    <div class="col-lg-8 col-md-10">
+                                <div class="mb-3">
+                                    <label class="form-label titulo-verde">Altura (m)</label>
+                                    <input type="number" step="0.1" class="form-control" name="altura" id="altura"
+                                        placeholder="ejemplo 1.60">
+                                </div>
 
-        <h2 class="text-center titulo-naranja mb-3"></h2>
-
-        <div class="card shadow-lg rounded-4 border-0">
-            <div class="card-body p-4 p-md-5">
-                <div class="mb-3 ">
-
-                    <form method="POST" action="{{ url_for('calcular_pci') }}">
-
-                        <div class="mb-3">
-                            <label class="form-label titulo-verde">Peso (kg)</label>
-                            <input type="number" step="0.1" class="form-control" name="peso" id="peso"
-                                placeholder="ejemplo 40">
+                                <div class="text-center">
+                                    <button type="submit" class="btn  boton-naranja">Calcular PCI</button>
+                                </div>
+                            </form>
                         </div>
-
-
-                        <div class="mb-3">
-                            <label class="form-label titulo-verde">Altura (m)</label>
-                            <input type="number" step="0.1" class="form-control" name="altura" id="altura"
-                                placeholder="ejemplo 1.60">
-                        </div>
-
-                        <div class="text-center">
-                            <button type="submit" class="btn  boton-naranja">Calcular PCI</button>
-                        </div>
-                    </form>
+                    </div>
 
                 </div>
             </div>
@@ -74,5 +86,72 @@ Calculadora de Peso Corporal Ideal
 
     </div>
 </div>
+
+<div class="p-4 seccion-clara">
+    <h3 class="text-center titulo-naranja mb-3">Información sobre la TMB</h3>
+    <p class="text-center">Tener un peso saludable significa tener un peso corporal que esté dentro de un rango considerado óptimo para tu altura, edad y género, de acuerdo con criterios médicos y de salud pública.
+
+        Mantener un peso saludable es importante para reducir el riesgo de diversas enfermedades crónicas, como la diabetes tipo 2, enfermedades cardiacas, hipertensión, apnea del sueño, ciertos tipos de cáncer y problemas articulares, entre otros, como veremos a continuación.
+
+        Nuestro objetivo con esta calculadora es, precisamente, que conozcas cuál es tu peso saludable y, además, te ofrecemos algunos consejos para lograr alcanzarlo. </p>
+</div>
+
+<div class="container my-5">
+
+    <div class="row align-items-center mb-5 g-4">
+        <div class="col-lg-6">
+            <img src="{{ url_for('static', filename='styles/img/componentes_tmb.jpg') }}" class="img-fluid rounded img-round " alt="formula IMC">
+        </div>
+
+        <div class="col-lg-6">
+            <h3 class="titulo-verde mb-3">¿Cuál es la fórmula para calcular el peso saludable?</h3>
+            
+            <p>Normalmente, el peso normal, lo que podríamos considerar como saludable, se define en relación a la altura, teniendo en cuenta tu Índice de Masa Corporal – que, por otro lado, puedes calcular aquí –. Una relación entre tu peso corporal (en kilogramos) y el cuadrado de tu altura (en metros) que se sitúe en un rango de 18.5 a 24.9 kg/m2 se puede considerar como peso saludable.</p>
+
+            <p> A pesar de que esta es la definición teórica y aceptada a nivel global, lo cierto es que sigue existiendo una considerable controversia sobre el impacto de otras medidas de composición corporal y adiposidad en lo que podríamos considerar un peso saludable (revisión, revisión, metanálisis). Entre ellas, por ejemplo, la grasa corporal, la circunferencia de la cintura, la relación cintura-cadera y la masa magra. </p>
+            
+        </div>
+    </div>
+
+    <div class="row align-items-center mb-5 g-4 flex-lg-row-reverse">
+        <div class="col-lg-6 ">
+            <img src="{{ url_for('static', filename='styles/img/grafica_tmb.jpg') }}"
+             class="img-fluid rounded img-round " 
+             alt="Hombrew y mujer igual">
+        </div>
+
+        <div class="col-lg-6">
+            <h3 class="titulo-verde mb-3">¿Qué tan importante es estar en un peso saludable?</h3>
+            
+            <p>A nivel de salud, claramente, no estar en un peso saludable a consecuencia de tener sobrepeso u obesidad tiene muchos efectos adversos, particularmente sobre los factores de riesgo de enfermedades cardiovasculares y la prevalencia y gravedad de las enfermedades una vez contraídas</p>
+            <p>Mantener un peso saludable es importante para reducir el riesgo de diversas enfermedades crónicas, como la diabetes tipo 2, enfermedades cardiacas, hipertensión, síndrome metabólico, apnea del sueño, ciertos tipos de cáncer y problemas articulares, entre otros</p>
+            <p>En 2022, más de 2500 millones de adultos (43% de la población adulta mundial) padecían sobrepeso, de los cuales más de 890 millones (16%) padecían obesidad (fuente) con tasas de obesidad que superaban el 50% en muchos países. De igual forma, más de 390 millones de niños y adolescentes de entre 5 y 19 años tenían sobrepeso en 2022, incluidos 160 millones que vivían con obesidad </p>
+            <p>Los datos son verdaderamente alarmantes a pesar de que el aumento de la prevalencia de la obesidad en los países desarrollados parece haberse desacelerado en los últimos años, y ningún país ha logrado revertir la epidemia. Tampoco parece que vaya a ser así a medio plazo, puesto que las estimaciones modeladas han pronosticado un aumento adicional del 33% en la prevalencia de la obesidad para el año 2030.</p>
+        </div>
+    </div>
+
+    <div class="row align-items-center mb-5 g-4">
+        <div class="col-lg-6 ">
+            <img src="{{ url_for('static', filename='styles/img/funciones_tmb.jpg') }}" 
+            class="img-fluid rounded img-round shadow" 
+            alt="Limitaciones imc">
+        </div>
+        
+        <div class="col-lg-6">
+                <h3 class="titulo-verde mb-3">3 consejos para perder peso de forma saludable</h3>
+
+                <p>A continuación te mostramos los tres consejos más importantes para que lo consigas de forma saludable y, sobre todo, para que una vez alcanzado el peso objetivo y el porcentaje graso deseado, seas capaz de mantenerlo.</p>
+                <p>Ten en cuenta que una pérdida de grasa saludable es la que se consigue gracias a unos hábitos diarios sostenibles y que, además, permite mantener tu cantidad de masa muscular o, por qué no, en determinados casos, incluso aumentarla (sí, es posible). Los consejos que vas a leer a continuación se sitúan dentro de este contexto.</p>
+                <p class="titulo-naranja">Consejo nº1. Establece objetivos realistas y ten paciencia</p>
+                <p>Es importante enfocarse en cambios graduales en lugar de buscar resultados rápidos, manteniendo una perspectiva a largo plazo y priorizando la adherencia a un estilo de vida saludable, que es lo que irás consiguiendo integrar en tu vida poco a poco</p>
+                <p class="titulo-naranja"> Consejo nº2. No te centres únicamente en el ejercicio cardiovascular</p>
+                <p>Tradicionalmente, se ha promovido el ejercicio con mayor componente cardiovascular como correr, hacer elíptica, nadar, montar en bicicleta, saltar a la comba, aeróbic, etc. como el más adecuado para perder grasa. La realidad es, sin embargo, algo diferente.</p>
+                <p>Es cierto que el ejercicio cardiovascular nos permite gastar más calorías por unidad de tiempo practicado, pero como el objetivo de una pérdida de peso saludable, como hemos indicado antes, no tiene que ser únicamente el de perder masa corporal sino lograr una mejor composición corporal, el ejercicio de fuerza también ha de ser parte fundamental de la rutina de ejercicios.</p>
+                <p class="titulo-naranja">Consejo nº3. Establece un déficit calórico adecuado a tu situación personal, pero siempre con una ingesta diaria proteica alta</p>
+                <p>Para perder peso es necesario gastar más calorías al día de las que ingieres a través de la comida, pero ¿qué diferencia entre lo uno y lo otro es recomendable para que la pérdida de peso sea saludable y sostenible?</p>
+                <p>Pero, evidentemente, además de la cantidad total de calorías diarias y de la magnitud del déficit calórico para perder grasa corporal, el reparto de macronutrientes resulta importante.</p>
+                 <p>De hecho, si tenemos en cuenta la pirámide de Helms et al. (2019), un magnífico recurso que clasifica el orden de prioridades para perder grasa corporal, entre las más importantes se sitúa la ingesta diaria de proteínas, y es que el consumo de mayores cantidades de proteína durante las dietas de pérdida de peso graso ayuda a preservar la masa muscular en un entorno fisiológico que, por lo demás, es catabólico.</p>
+            </div>
+    </div>
 
 {% endblock %}

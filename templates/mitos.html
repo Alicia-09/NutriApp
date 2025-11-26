@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block pagina %}
+Educación
+{% endblock %}
+
+{% block titulo %}
+Mitos
+{% endblock %}
+
+{% block menu %}
+<div class="container my-5 p-4 rounded shadow-lg" style="background-color:#fefaf4;">
+    <div class="row flex-lg-row-reverse align-items-center g-4">
+
+        <div class="col-lg-6">
+            <img src="{{ url_for('static', filename='styles/img/dietas_moda.jpg') }}" 
+                 alt="Dietas de moda"
+                 class="img-fluid rounded shadow img-round">
+        </div>
+
+        <div class="col-lg-6">
+            <h2 class="titulo-naranja mb-3">Mitos y verdades sobre las dietas de moda</h2>
+
+            <p>Las dietas populares suelen prometer resultados rápidos, pero no siempre son saludables. Aprende a identificar qué consejos son falsos y cuáles sí tienen sustento científico.</p>
+
+            <ul>
+                <li>¿Bajar rápido de peso es saludable?</li>
+                <li>¿Eliminar carbohidratos es necesario?</li>
+                <li>¿Los jugos detox sirven para desintoxicar?</li>
+                <li>¿Todas las dietas funcionan igual para todos?</li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
