@@ -323,6 +323,43 @@ def detalle_receta(recipe_id):
                          receta=receta,
                          instrucciones=instrucciones_analizadas)
 
+@app.route("/analizador", methods=['GET', 'POST'])
+def analizador_recetas():
+    analisis = None
+    error = None
+    if request.method == 'POST':
+        tipo_analisis = request.form.get('tipo_analisis')
+        
+        if tipo_analisis == 'manual':
+            titulo = request.form.get('titulo', '')
+            porciones = request.form.get('porciones', '')
+            ingredientes = request.form.get('ingredientes', '').split('\n')
+
+            url = f"{API_URL}/recipes/analyze"
+            params = {'apiKey': SPOONACULAR_API_KEY,                
+                      'includeNutrition': True,
+                      'language': 'es'}
+            
+            data = {
+                'title': titulo,
+                'ingredients': [ing for ing in ingredientes if ing.strip()],
+                'servings': porciones,
+            }
+
+            try:
+                response = requests.post(url, params=params, json=data)
+                analisis = response.json()
+            except requests.exceptions.RequestException as e:
+                print(f"Error analizando receta: {e}")
+                return None
+        
+        if not analisis:
+            error = 'No se pudo analizar la receta. Verifica los datos e intenta nuevamente.'
+       
+    return render_template("analizador.html",
+                         analisis=analisis,
+                         error=error)
+
 @app.route("/calcular_macro", methods=["GET", "POST"])
 def calcular_macro():
     if request.method == "POST":
