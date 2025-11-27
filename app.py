@@ -285,7 +285,7 @@ def buscar_recetas():
                                 diet=diet)
         
     return render_template("recetas.html", 
-                         recetas=[],
+                        recetas=[],
                          query=query,
                          diet=diet)
 

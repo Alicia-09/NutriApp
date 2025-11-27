@@ -19,7 +19,7 @@
             <div class="container">
                 <a class="navbar-brand fw-bold titulo-verde">
                     <img src="{{ url_for('static', filename='styles/img/logotipo.png') }}" class="img-fluid"
-                     alt="lopgotipo">
+                    alt="lopgotipo">
                     {% block titulo %}{% endblock %}</a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
@@ -42,14 +42,10 @@
                     {% if session.loggeado %}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle welcome-user" href="#" role="button" data-bs-toggle="dropdown">
-                                 {{ session.usuario }}
+                                {{ session.usuario }}
                             </a>
 
                             <ul class="dropdown-menu">
-                                <li>
-                                    <a class="dropdown-item" href="http://127.0.0.1:5000/perfil">
-                                    <i class="fas fa-user"></i> Mi Perfil
-                                </a></li>
 
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item text-danger" href="http://127.0.0.1:5000/cerrar_sesion">
