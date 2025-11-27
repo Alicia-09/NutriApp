@@ -324,6 +324,7 @@ def detalle_receta(recipe_id):
                          instrucciones=instrucciones_analizadas)
 
 @app.route("/analizador", methods=['GET', 'POST'])
+
 def analizador_recetas():
     analisis = None
     error = None
