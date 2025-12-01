@@ -43,7 +43,44 @@ Hidratacion
             </div>
 
 
-            
+        <div class="m-5">
+            <h3 class="titulo-naranja text-center mb-4 fw-bold">Ilustraciones Informativas</h3>
+
+            <div id="carouselHidratacion" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+
+                    <div class="carousel-item active">
+                        <img src="{{ url_for('static', filename='styles/img/hidratarse.jpg') }}" 
+                        class="d-block mx-auto rounded" alt="Hidratación">
+                    </div>
+
+                    <div class="carousel-item">
+                        <img src="{{ url_for('static', filename='styles/img/agua.jpg') }}" 
+                        class="d-block mx-auto rounded" alt="Porque el cuerpo necesita agua">
+                    </div>
+
+                    <div class="carousel-item">
+                        <img src="{{ url_for('static', filename='styles/img/nutrientes.jpg') }}" 
+                        class="d-block mx-auto rounded" alt="Minerales">
+                    </div>
+
+                    <div class="carousel-item">
+                        <img src="{{ url_for('static', filename='styles/img/antioxidantes.png') }}" 
+                        class="d-block mx-auto" alt="Antioxidantes">
+                    </div>
+
+                </div>
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselHidratacion" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselHidratacion" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+
   <h3 class="titulo-verde fw-bold mb-3">Minerales</h3>
             <p>
                 Los minerales ayudan en funciones esenciales como la formación de huesos, el transporte de oxígeno, la 
@@ -72,44 +109,6 @@ Hidratacion
                 <li>Controlan el envejecimiento celular.</li>
             </ul>
 
-        </div>
-
-             <div class="mt-5">
-            <h3 class="titulo-naranja text-center mb-4 fw-bold">Ilustraciones Informativas</h3>
-
-            <div id="carouselHidratacion" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-
-                    <div class="carousel-item active">
-                        <img src="img/hidratacion.png" class="d-block w-100 rounded" alt="Hidratación">
-                    </div>
-
-                    <div class="carousel-item">
-                        <img src="img/fibra.png" class="d-block w-100 rounded" alt="Fibra">
-                    </div>
-
-                    <div class="carousel-item">
-                        <img src="img/vitaminas.png" class="d-block w-100 rounded" alt="Vitaminas">
-                    </div>
-
-                    <div class="carousel-item">
-                        <img src="img/minerales.png" class="d-block w-100 rounded" alt="Minerales">
-                    </div>
-
-                    <div class="carousel-item">
-                        <img src="img/antioxidantes.png" class="d-block w-100 rounded" alt="Antioxidantes">
-                    </div>
-
-                </div>
-
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselHidratacion" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon"></span>
-                </button>
-
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselHidratacion" data-bs-slide="next">
-                    <span class="carousel-control-next-icon"></span>
-                </button>
-            </div>
         </div>
 
     </section>
