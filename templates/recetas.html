@@ -30,22 +30,13 @@ Recetas
                         <form method="GET" action="/buscar_recetas">
                             <div class="row g-3 align-items-end">
 
-                                <div class="col-md-6">
+                                <div class="col-md-8">
                                     <label for="query" class="form-label text-success">¿Que quieres cocinar?</label>
                                     <input type="text" class="form-control" id="query" name="query" 
                                            placeholder="Ej: pollo, ensalada, etc..." value="{{ query if query }}">
                                 </div>
-                                <div class="col-md-3">
-                                    <label for="diet" class="form-label text-success">Tipo de dieta</label>
-                                    <select class="form-select" id="diet" name="diet">
-                                        <option value="">Todas</option>
-                                        <option value="vegetarian">Vegetariana</option>
-                                        <option value="vegan">Vegana</option>
-                                        <option value="glutenfree">Sin gluten</option>
-                                        <option value="ketogenic">Keto</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-3">
+
+                                <div class="col-md-4">
                                     <button type="submit" class="btn boton-naranja w-100">
                                         <i class="fas fa-search me-1"></i> Buscar
                                     </button>

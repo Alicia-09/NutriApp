@@ -26,6 +26,24 @@ FA = {
 
 }
 
+#Receta no saludable ejemplo
+#Brownie
+#½ cup butter or margarine
+#2 eggs
+#1 cup of flour
+#1 cup semisweet chocolate chips
+#½ cup of brown sugar
+#½ cup of chopped walnuts
+
+#Receta saludable ejemplo
+#Pancakes
+#1 ½ cups all-purpose flour
+#3 ½ teaspoons baking powder
+#1 teaspoon salt
+#1 tablespoon white sugar
+#1 ¼ cups milk
+#1 egg 
+
 @app.route("/")
 def inicio():
     return render_template("inicio.html")
@@ -273,12 +291,9 @@ def buscar_recetas():
             return None
         
         if resultados:
-            recetas = resultados['results']
-            
-            if diet:
-                recetas = [r for r in recetas if getattr(r, diet, False)]
+            recetas = resultados.get("results", [])
+
         
-            
             return render_template("recetas.html", 
                                 recetas=recetas,
                                 query=query,

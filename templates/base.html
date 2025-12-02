@@ -41,10 +41,11 @@
 
 
                     {% if session.loggeado %}
-                        <li class="nav-item"><a class="nav-link menu-color" href="http://127.0.0.1:5000/analizador">Analizador de recetas</a></li>
-                        <li class="nav-item"><a class="nav-link menu-color" href="http://127.0.0.1:5000/buscar_recetas">Buscar Recetas</a></li>
+                        <li class="nav-item"><a class="nav-link menu-color" href="http://127.0.0.1:5000/analizador">
+                            <i class="fas fa-utensils me-1"></i>Analizador de recetas</a></li>
+                        <li class="nav-item"><a class="nav-link menu-color" href="http://127.0.0.1:5000/buscar_recetas">
+                            <i class="fas fa-magnifying-glass me-1"></i>Buscar Recetas</a></li>
                     {% endif %}
-
                     {% if session.loggeado %}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle welcome-user" href="#" role="button" data-bs-toggle="dropdown">
