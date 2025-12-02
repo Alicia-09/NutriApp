@@ -266,6 +266,52 @@ def calcular_pci():
 def MACRO():
     return render_template("MACRO.html")
 
+@app.route("/calcular_macro", methods=["GET", "POST"])
+def calcular_macro():
+    if request.method == "POST":
+        try:
+            
+            sexo = request.form.get("sexo")
+            peso = float(request.form.get("peso"))
+            altura = float(request.form.get("altura"))
+            edad = int(request.form.get("edad"))
+            actividad = request.form.get("actividad")
+            objetivo = request.form.get("objetivo")
+
+            if sexo == "hombre":
+                    tmb = (10 * peso) + (6.25 * altura) - (5 * edad) + 5
+
+            elif sexo == "mujer":
+                    tmb = (10 * peso) + (6.25 * altura) - (5 * edad) - 161
+        
+            factor_actividad = FA[actividad]
+            calorias_diarias = round((tmb * factor_actividad), 2)
+
+            if objetivo == "bajar":
+                calorias_objetivo = round((calorias_diarias * 0.85), 2)
+            elif objetivo == "subir":
+                calorias_objetivo = round((calorias_diarias * 1.15), 2)
+            else:
+                calorias_objetivo = calorias_diarias
+
+            por_carbo = 0.50
+            por_prote = 0.25
+            por_grasas = 0.25
+
+            gramos_carbo = round(((calorias_objetivo * por_carbo) / 4), 2)
+            gramos_prote = round(((calorias_objetivo * por_prote) / 4), 2)
+            gramos_grasas = round(((calorias_objetivo * por_grasas) / 9), 2)
+
+        except:
+            flash ("Error, ingrese denuevo los datos")
+            return render_template("MACRO.html")
+        
+        return render_template("MACRO.html", 
+                                    calorias = (calorias_objetivo),
+                                    carbo = (gramos_carbo),
+                                    prote = (gramos_prote),
+                                    grasas = (gramos_grasas)) 
+
 @app.route("/buscar_recetas", methods=["GET", "POST"])
 def buscar_recetas():
     query = request.args.get('query', '')
@@ -375,52 +421,6 @@ def analizador_recetas():
     return render_template("analizador.html",
                          analisis=analisis,
                          error=error)
-
-@app.route("/calcular_macro", methods=["GET", "POST"])
-def calcular_macro():
-    if request.method == "POST":
-        try:
-            
-            sexo = request.form.get("sexo")
-            peso = float(request.form.get("peso"))
-            altura = float(request.form.get("altura"))
-            edad = int(request.form.get("edad"))
-            actividad = request.form.get("actividad")
-            objetivo = request.form.get("objetivo")
-
-            if sexo == "hombre":
-                    tmb = (10 * peso) + (6.25 * altura) - (5 * edad) + 5
-
-            elif sexo == "mujer":
-                    tmb = (10 * peso) + (6.25 * altura) - (5 * edad) - 161
-        
-            factor_actividad = FA[actividad]
-            calorias_diarias = round((tmb * factor_actividad), 2)
-
-            if objetivo == "bajar":
-                calorias_objetivo = round((calorias_diarias * 0.85), 2)
-            elif objetivo == "subir":
-                calorias_objetivo = round((calorias_diarias * 1.15), 2)
-            else:
-                calorias_objetivo = calorias_diarias
-
-            por_carbo = 0.50
-            por_prote = 0.25
-            por_grasas = 0.25
-
-            gramos_carbo = round(((calorias_objetivo * por_carbo) / 4), 2)
-            gramos_prote = round(((calorias_objetivo * por_prote) / 4), 2)
-            gramos_grasas = round(((calorias_objetivo * por_grasas) / 9), 2)
-
-        except:
-            flash ("Error, ingrese denuevo los datos")
-            return render_template("MACRO.html")
-        
-        return render_template("MACRO.html", 
-                                    calorias = (calorias_objetivo),
-                                    carbo = (gramos_carbo),
-                                    prote = (gramos_prote),
-                                    grasas = (gramos_grasas)) 
 
 @app.route("/etiquetas")
 def etiquetas():
