@@ -340,7 +340,7 @@ def buscar_recetas():
             recetas = resultados.get("results", [])
             
             if diet:
-                recetas = [r for r in recetas if getattr(r, diet, False)]
+                recetas = [r for r in recetas if r.get("vegetarian", False)]
         
             return render_template("recetas.html", 
                                 recetas=recetas,
