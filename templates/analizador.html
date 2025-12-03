@@ -12,7 +12,7 @@ Analizador
 {% block menu %}
 <div class="seccion-clara">
     <div class="container">
-        
+
         {% if analisis %}
         <div class="row">
             <div class="col-12">
@@ -26,8 +26,8 @@ Analizador
                         </a>
                     </div>
                     <div class="card-body">
-                        
-                       
+
+
                         <div class="row mb-4">
                             <div class="col-md-8">
                                 <h2 class="text-success">{{ analisis.title }}</h2>
@@ -52,15 +52,16 @@ Analizador
                                                 {% if nutrient.percentOfDailyNeeds %}
                                                 <span class="badge ms-1 {% if nutrient.percentOfDailyNeeds > 100 %}bg-danger
                                                 {% elif nutrient.percentOfDailyNeeds > 80 %}bg-warning
-                                                {% else %}bg-success{% endif %}">{{ nutrient.percentOfDailyNeeds|round(1) }}%</span>
+                                                {% else %}bg-success{% endif %}">{{
+                                                    nutrient.percentOfDailyNeeds|round(1) }}%</span>
                                                 {% endif %}
                                             </span>
                                         </div>
-                                            <div class="progress barra">
+                                        <div class="progress barra">
                                             <div class="progress-bar 
                                                 {% if nutrient.percentOfDailyNeeds > 100 %}bg-danger
                                                 {% elif nutrient.percentOfDailyNeeds > 80 %}bg-warning
-                                                {% else %}bg-success{% endif %}" 
+                                                {% else %}bg-success{% endif %}"
                                                 style="width: {{ nutrient.percentOfDailyNeeds if nutrient.percentOfDailyNeeds else 0 }}%">
                                             </div>
                                         </div>
@@ -72,7 +73,7 @@ Analizador
                         </div>
                         {% endif %}
 
-                       
+
                         {% if analisis.extendedIngredients %}
                         <div class="card">
                             <div class="card-header bg-light">
@@ -87,7 +88,8 @@ Analizador
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" id="ing{{ loop.index }}">
                                             <label class="form-check-label" for="ing{{ loop.index }}">
-                                                <strong>{{ ingrediente.amount|round(1) }} {{ ingrediente.unit }}</strong> - {{ ingrediente.name }}
+                                                <strong>{{ ingrediente.amount|round(1) }} {{ ingrediente.unit
+                                                    }}</strong> - {{ ingrediente.name }}
                                             </label>
                                         </div>
                                     </div>
@@ -101,69 +103,7 @@ Analizador
             </div>
         </div>
         {% endif %}
-
-        <div class="row">
-            <div class="col-12">
-                <div class="card mt-4 mb-4">
-                    <div class="card-header encabezado text-white">
-                        <h4 class="card-title mb-0">
-                            <i class="fas fa-chart-bar"></i> Analizador de Recetas
-                        </h4>
-                    </div>
-                    <div class="card-body">
-                        
-
-                        <div class="tab-content" id="analizadorTabsContent">
-                            
-                            
-                            <div class="tab-pane fade show active" id="manual" role="tabpanel">
-                                <form method="POST">
-                                    <input type="hidden" name="tipo_analisis" value="manual">
-                                    
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <label for="titulo" class="form-label">Título de la Receta</label>
-                                                <input type="text" class="form-control" id="titulo" name="titulo" 
-                                                    placeholder="Ej: Ensalada César" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <label for="porciones" class="form-label">Porciones</label>
-                                                <input type="number" class="form-control" id="porciones" name="porciones" 
-                                                    value="4" min="1" max="20">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="mb-3">
-                                        <label for="ingredientes" class="form-label">Ingredientes</label>
-                                        <textarea class="form-control" id="ingredientes" name="ingredientes" 
-                                                rows="6" placeholder="Un ingrediente por línea:
-                                                - 1 lechuga romana
-                                                - 2 tazas de crutones
-                                                - 1/2 taza de queso parmesano
-                                                - 1/4 taza de aderezo César" required></textarea>
-                                        <div class="form-text">Ingresa un ingrediente por linea</div>
-                                    </div>
-                                    
-                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                        <button type="reset" class="btn btn-outline-secondary me-md-2">
-                                            <i class="fas fa-undo"></i> Limpiar
-                                        </button>
-
-                                        <button type="submit" class="btn boton-naranja">
-                                            <i class="fas fa-chart-bar"></i> Analizar Receta
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>     
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
+
 {% endblock %}
